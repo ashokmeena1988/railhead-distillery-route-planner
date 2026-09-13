@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mappls Deep Diagnostic</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f3f6fa;padding:24px;color:#1f2937}
+.card{max-width:980px;margin:auto;background:#fff;padding:24px;border-radius:16px;box-shadow:0 5px 22px rgba(0,0,0,.08)}
+h1{margin-top:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-weight:700;font-size:14px}input,select{width:100%;box-sizing:border-box;padding:11px;margin:6px 0 14px;border:1px solid #cbd5e1;border-radius:8px}
+button{padding:11px 16px;border:0;border-radius:8px;background:#0f766e;color:#fff;font-weight:700;cursor:pointer;margin:4px 6px 4px 0}
+button.secondary{background:#475569}.danger{background:#fff7ed;color:#9a3412;padding:12px;border-radius:9px;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin-top:16px}th,td{padding:10px;border-bottom:1px solid #e5e7eb;text-align:left;font-size:14px}
+.ok{color:#047857;font-weight:700}.bad{color:#b91c1c;font-weight:700}.wait{color:#92400e;font-weight:700}
+pre{background:#111827;color:#e5e7eb;padding:15px;border-radius:9px;overflow:auto;max-height:460px;font-size:12px;white-space:pre-wrap}
+.small{font-size:13px;color:#64748b}.mono{font-family:monospace}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Mappls Deep Diagnostic</h1>
+<p>Test route: <b>Jabalpur → Bhopal</b></p>
+
+<div class="danger">
+<b>Security:</b> Enter your Static Key only in this page. Never paste it into Chat.
+The key is kept only in this browser page and is not saved by this diagnostic.
+Do not take a screenshot while the key or API URL is visible.
+</div>
+
+<div class="grid">
+<div>
+<label>Mappls Static Key</label>
+<input id="key" type="password" autocomplete="off" placeholder="Paste Static Key">
+</div>
+<div>
+<label>Profile</label>
+<select id="profile">
+<option value="driving">Driving</option>
+<option value="trucking">Trucking</option>
+</select>
+</div>
+</div>
+
+<button id="run">Run All Browser Tests</button>
+<button id="direct" class="secondary">Open Direct API Response</button>
+<button id="clear" class="secondary">Clear</button>
+
+<h3>Test results</h3>
+<table>
+<thead><tr><th>Test</th><th>Result</th><th>Details</th></tr></thead>
+<tbody id="results"></tbody>
+</table>
+
+<h3>Technical response</h3>
+<pre id="out">No test run yet.</pre>
+
+<p class="small">
+The "Direct API Response" test opens the Mappls URL as a normal browser navigation.
+This is useful because a normal browser navigation is not blocked by page CORS rules.
+The URL contains the key temporarily, so do not screenshot or share that browser tab.
+</p>
+</div>
+
+<script>
+const A={lng:79.9864,lat:23.1815}, B={lng:77.4126,lat:23.2599};
+const results=document.getElementById('results');
+const out=document.getElementById('out');
+
+function add(name,state,details){
+ const tr=document.createElement('tr');
+ tr.innerHTML=`<td>${name}</td><td class="${state==='PASS'?'ok':state==='FAIL'?'bad':'wait'}">${state}</td><td>${details}</td>`;
+ results.appendChild(tr);
+}
+function clearResults(){results.innerHTML='';out.textContent='No test run yet.';}
+function urlFor(key,profile){
+ const coord=`${A.lng},${A.lat};${B.lng},${B.lat}`;
+ return `https://route.mappls.com/route/direction/route_adv/${profile}/${coord}?geometries=geojson&overview=full&steps=false&rtype=0&access_token=${encodeURIComponent(key)}`;
+}
+async function runFetch(url,label){
+ try{
+   const t0=performance.now();
+   const r=await fetch(url,{method:'GET',cache:'no-store'});
+   const text=await r.text();
+   const ms=Math.round(performance.now()-t0);
+   let data; try{data=JSON.parse(text)}catch{data={raw:text}};
+   out.textContent=JSON.stringify({test:label,httpStatus:r.status,ok:r.ok,response:data},null,2);
+   return {type:'response',status:r.status,ok:r.ok,data,ms};
+ }catch(e){
+   out.textContent=JSON.stringify({
+     test:label,error:e.name,message:e.message,
+     pageOrigin:location.origin,
+     targetOrigin:'https://route.mappls.com',
+     hint:'A browser "Failed to fetch" can mean CORS, network blocking, TLS/DNS, or a browser extension. It does not reveal the HTTP status.'
+   },null,2);
+   return {type:'fetch-error',error:e.message};
+ }
+}
+
+document.getElementById('run').onclick=async()=>{
+ clearResults();
+ const key=document.getElementById('key').value.trim();
+ const profile=document.getElementById('profile').value;
+ if(!key){add('Input','FAIL','Enter the Static Key first.');return;}
+ const url=urlFor(key,profile);
+
+ add('1. Page origin','PASS',location.origin);
+ add('2. HTTPS page','PASS',location.protocol==='https:'?'HTTPS':'Unexpected protocol');
+
+ // Connectivity probe. A CORS rejection is still useful as a transport signal,
+ // while an HTTP response is stronger evidence that the host is reachable.
+ try{
+   const r=await fetch('https://route.mappls.com/',{method:'GET',cache:'no-store'});
+   add('3. Mappls host','PASS',`HTTP ${r.status} received from route.mappls.com`);
+ }catch(e){
+   add('3. Mappls host','FAIL',`Browser could not read a response: ${e.message}`);
+ }
+
+ const res=await runFetch(url,'Route ADV '+profile);
+ if(res.type==='response'){
+   if(res.status===200 && res.ok){
+     add('4. Route ADV','PASS','HTTP 200 — API returned a successful response.');
+     const route=res.data?.routes?.[0];
+     if(route){
+       const d=route.distance ?? route.summary?.distance;
+       const s=route.duration ?? route.summary?.duration;
+       let details='Route object found';
+       if(typeof d==='number') details+=`; distance ${(d/1000).toFixed(2)} km`;
+       if(typeof s==='number') details+=`; duration ${(s/60).toFixed(1)} min`;
+       add('5. Route data','PASS',details);
+     }else add('5. Route data','FAIL','HTTP 200 but no routes array was found. See technical response.');
+   }else{
+     add('4. Route ADV','FAIL',`HTTP ${res.status}. See Technical response for Mappls error.`);
+     if(res.status===401) add('5. Diagnosis','FAIL','401 = key/authentication or key permission issue.');
+     else if(res.status===403) add('5. Diagnosis','FAIL','403 = quota, domain/IP whitelist, or access restriction.');
+     else if(res.status===404) add('5. Diagnosis','FAIL','404 = endpoint/profile/request format issue.');
+     else add('5. Diagnosis','WAIT','Use the HTTP status and response body above for diagnosis.');
+   }
+ }else{
+   add('4. Route ADV','FAIL','Browser reported Failed to fetch; no HTTP status was exposed.');
+   add('5. Diagnosis','WAIT','Use "Open Direct API Response" next. It can reveal the actual HTTP response.');
+ }
+};
+
+document.getElementById('direct').onclick=()=>{
+ const key=document.getElementById('key').value.trim();
+ const profile=document.getElementById('profile').value;
+ if(!key){add('Direct test','FAIL','Enter the Static Key first.');return;}
+ window.open(urlFor(key,profile),'_blank','noopener');
+};
+
+document.getElementById('clear').onclick=()=>{
+ document.getElementById('key').value='';
+ clearResults();
+};
+</script>
+</body>
+</html>
