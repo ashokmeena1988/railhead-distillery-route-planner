@@ -1,0 +1,595 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="strict-origin-when-cross-origin"><title>Ethanol Logistics — FCI Professional Route Planner</title><style>
+:root{--g:#006b3c;--g2:#008f5a;--g3:#eaf7f0;--dark:#005a33;--ink:#18352b;--muted:#64756e;--line:#d7e2dc;--bg:#f3f6f4;--white:#fff;--blue:#1769e0;--red:#d84343;--orange:#e58a12;--shadow:0 2px 9px rgba(22,55,42,.07)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:"Noto Sans","Segoe UI",Inter,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}body{overflow:hidden;font-size:14px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}button,input,select{font:inherit}.app{height:100vh;display:flex;flex-direction:column;background:#f7f8f7}.topbar{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px;gap:18px;z-index:5000;flex:none}.brand{width:270px;display:flex;align-items:center;gap:11px}.hamb{font-size:22px;border:0;background:none;color:#38534a;cursor:pointer}.logo{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #d6e8df;color:var(--g);font-weight:900;box-shadow:0 1px 4px #0001}.brand h1{font-size:19px;line-height:1;margin:0;color:#17382c}.brand small{font-size:11px;color:#718079}.globalSearch{height:40px;flex:1;max-width:560px;border:1px solid #cddbd5;border-radius:7px;padding:0 14px 0 42px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24'%3E%3Cpath fill='%23697a73' d='m21 19.6-5.2-5.2a7.6 7.6 0 1 0-1.4 1.4l5.2 5.2zM5.5 10a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0'/%3E%3C/svg%3E") 14px center/18px no-repeat;outline:0}.globalSearch:focus{border-color:#6ab995;box-shadow:0 0 0 3px #008c5012}.topnav{margin-left:auto;display:flex;height:100%;align-items:center;gap:2px}.topnav button{height:46px;border:0;background:transparent;color:#27473b;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:5px}.topnav button:hover,.topnav button.active{background:var(--g3);color:var(--g)}.user{height:48px;border-left:1px solid var(--line);padding-left:15px;display:flex;align-items:center;gap:9px;font-size:12px;font-weight:700}.avatar{width:36px;height:36px;border-radius:50%;background:#0b8c51;color:#fff;display:grid;place-items:center}.user small{display:block;color:#78877f;font-weight:500;margin-top:2px}.sidebar{position:fixed;left:0;top:70px;bottom:0;width:205px;background:linear-gradient(180deg,#006b3c,#005a33);color:#fff;z-index:4000;display:flex;flex-direction:column;box-shadow:2px 0 9px #0002}.tabs{padding:9px 7px}.tab{width:100%;border:0;background:transparent;color:#e3f2ec;text-align:left;padding:11px 13px;border-radius:6px;margin:2px 0;font-size:12px;font-weight:650;cursor:pointer}.tab:hover{background:#ffffff14}.tab.active{background:#20a66b;color:#fff;box-shadow:inset 3px 0 #fff}.tab:before{display:inline-block;width:25px;font-size:14px}.tab[data-tab=route]:before{content:'⌘'}.tab[data-tab=locations]:before{content:'●'}.tab[data-tab=matrix]:before{content:'▦'}.tab[data-tab=settings]:before{content:'⚙'}.sidebox{margin:10px 13px;padding:12px;border:1px solid #ffffff33;border-radius:7px;background:#005a3380}.sidebox h4{margin:0 0 9px;font-size:12px}.sideitem{display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid #ffffff18}.sideitem:last-child{border:0}.online{color:#8ef2bd}.sidefooter{margin-top:auto;padding:12px 14px;color:#bfe4d3;font-size:9px;line-height:1.5}.main{position:fixed;left:205px;right:0;top:70px;bottom:0;overflow:auto;padding:14px 16px 22px;background:#f4f7f5}.kpis{display:grid;grid-template-columns:repeat(6,minmax(130px,1fr));gap:9px;margin-bottom:10px}.kpi{background:#fff;border:1px solid var(--line);border-radius:7px;padding:10px 12px;min-height:70px;box-shadow:var(--shadow)}.kpi .ico{float:left;width:38px;height:38px;border-radius:7px;display:grid;place-items:center;background:#edf8f2;margin-right:10px;font-size:19px}.kpi:nth-child(2) .ico{background:#fff0f0}.kpi:nth-child(3) .ico{background:#edf4ff}.kpi:nth-child(4) .ico{background:#f0f5f3}.kpi:nth-child(5) .ico{background:#edf5ff}.kpi:nth-child(6) .ico{background:#eaf8f0}.kpi b{display:block;font-size:21px;line-height:1.05;color:#17392d}.kpi span{font-size:10px;color:#6f7f78;font-weight:800;text-transform:uppercase}.workspace{display:grid;grid-template-columns:minmax(520px,1fr) 430px;gap:10px;min-height:480px}.workspace.fullmode{grid-template-columns:1fr}.workspace.fullmode .mapcard{display:none}.workspace.fullmode .rightcol{width:100%}.workspace.fullmode .section.active{width:100%}.mapcard,.card{background:#fff;border:1px solid var(--line);border-radius:7px;box-shadow:var(--shadow)}.mapcard{overflow:hidden;position:relative;min-height:480px}.maphead{height:47px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;gap:7px}.maphead h3{font-size:14px;margin:0 8px 0 2px}.maptabs{display:flex;gap:3px}.maptabs button{border:1px solid var(--line);background:#fff;border-radius:5px;padding:7px 10px;font-size:10px;font-weight:700;color:#345247;cursor:pointer}.maptabs button:first-child{background:#e8f6ef;color:var(--g);border-color:#b8dfcc}.mapactions{margin-left:auto;display:flex;gap:5px}.mapactions .btn{padding:7px 9px}.map{height:calc(100% - 47px);width:100%;background:#e3ece8}.maptop{position:absolute;z-index:1000;top:57px;left:10px;right:10px;display:flex;justify-content:space-between;pointer-events:none}.searchbar,.maptools{pointer-events:auto;background:#fff;border:1px solid #d2ded9;box-shadow:var(--shadow);border-radius:6px;padding:5px}.searchbar{display:flex;gap:5px;width:350px}.searchbar input{border:0;outline:0;flex:1;padding:3px 7px;font-size:11px}.maptools{display:flex;gap:4px}.mapbottom{position:absolute;z-index:1000;left:10px;right:10px;bottom:10px;display:flex;justify-content:space-between;align-items:end;pointer-events:none}.summary{pointer-events:auto;background:#fff;border:1px solid #d2ded9;border-radius:7px;padding:9px 12px;box-shadow:var(--shadow);display:none}.summary.show{display:block}.summaryTop{display:flex;gap:12px;align-items:center}.bigkm{font-size:22px;font-weight:900;color:var(--g)}.time{font-size:11px;color:#1769e0;font-weight:800}.summaryDetails{font-size:10px;color:#718079;margin-top:3px}.legend{pointer-events:auto;background:#fff;border:1px solid #d2ded9;border-radius:6px;padding:7px 9px;font-size:10px;box-shadow:var(--shadow)}.legend span{margin-right:9px}.rightcol{display:flex;flex-direction:column;gap:10px}.section{display:none}.section.active{display:block}.routecard{background:#fff;border:1px solid var(--line);border-radius:7px;box-shadow:var(--shadow);padding:11px}.cardtitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.cardtitle h3{margin:0;font-size:14px}.cardtitle span{font-size:10px;color:#718079}.field{margin-bottom:8px}.field label{display:block;font-size:9px;font-weight:800;color:#64766e;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}.input,select{width:100%;height:35px;background:#fff;border:1px solid #cadad3;border-radius:6px;color:#1c352b;padding:0 9px;outline:0;font-size:11px}.input:focus,select:focus{border-color:#2ca66d;box-shadow:0 0 0 3px #008c5010}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toolbar{display:flex;gap:6px;flex-wrap:wrap}.btn{border:1px solid #cbdad3;background:#fff;color:#28473b;border-radius:6px;padding:8px 10px;cursor:pointer;font-size:12px;font-weight:700}.btn:hover{box-shadow:0 2px 6px #0001}.btn.primary,.btn.green{background:#078b4e;color:#fff;border-color:#078b4e}.btn.danger{background:#fff0f0;color:#b52d2d;border-color:#efc6c6}.status{padding:7px 8px;border-radius:5px;background:#f5f8f6;border:1px solid #dce7e2;color:#687a72;font-size:10px}.status.ok{background:#eefaf4;border-color:#bde4d0;color:#087644}.status.err{background:#fff4f4;border-color:#efc3c3;color:#b42e2e}.metricgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.metric{padding:8px;border:1px solid #e0e9e5;border-radius:6px;background:#fbfdfc;text-align:left}.metric b{display:block;font-size:17px;color:#0b7c4b}.metric span{font-size:8px;color:#71817b;text-transform:uppercase;font-weight:800}.route-list{display:flex;flex-direction:column;gap:5px}.stop{display:flex;align-items:center;gap:7px;padding:7px;border:1px solid #e0e9e5;border-radius:5px;background:#fbfdfc;font-size:10px}.dot{width:9px;height:9px;border-radius:50%;flex:none}.small{padding:5px 7px;font-size:9px}.routepanel{max-height:190px;overflow:auto}.empty{color:#899690;padding:10px;text-align:center;font-size:10px}.lower{display:none}.card{padding:11px}.card h3{font-size:13px;margin:0}.recent table{width:100%}.table{width:100%;border-collapse:collapse;font-size:10px}.table th,.table td{padding:7px 5px;border-bottom:1px solid #e6ece9;text-align:left}.table th{font-size:8px;text-transform:uppercase;color:#718079}.badge{display:inline-block;padding:3px 6px;border-radius:99px;background:#eaf7f0;color:#087644;font-size:8px;font-weight:800}.statsrow{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #edf1ef}.statsrow:last-child{border:0}.statsrow b{font-size:14px}.quickgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.quick{border:1px solid #d8e8e0;background:#f8fbf9;border-radius:6px;padding:9px;text-align:center;font-size:9px;font-weight:800;color:#1769e0;cursor:pointer}.quick:hover{background:#edf8f2}.footer{display:flex;justify-content:space-between;padding:12px 2px 0;color:#77867f;font-size:9px}.footer strong{color:#14754a}.pin{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;border:3px solid #fff;box-shadow:0 3px 10px #0004;font-weight:900;font-size:9px}.modal{position:fixed;inset:0;background:#0006;display:none;place-items:center;z-index:6000}.modal.show{display:grid}.modalbox{width:min(560px,calc(100% - 30px));background:#fff;border-radius:9px;padding:18px;box-shadow:0 25px 70px #0005}.modalhead{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:none;font-size:24px}.hint{font-size:10px;color:var(--muted);line-height:1.45}.scrollx{overflow:auto}.matrix{border-collapse:collapse;font-size:11px;min-width:760px}.matrix td,.matrix th{padding:8px;border:1px solid #dce7e2;white-space:nowrap}.matrix th{background:#f4f8f6;font-weight:800}.matrix td{text-align:center}.matrix-layout{display:grid;grid-template-columns:330px minmax(0,1fr);gap:12px}.matrix-pick{max-height:520px;overflow:auto;border:1px solid #dce7e2;border-radius:7px;padding:8px}.matrix-pick label{display:flex;align-items:flex-start;gap:7px;padding:7px 6px;border-bottom:1px solid #eef2f0;font-size:10px;text-transform:none;letter-spacing:0;font-weight:600;margin:0}.matrix-pick label:last-child{border-bottom:0}.matrix-pick input{width:15px;height:15px;margin-top:1px}.matrix-toolbar{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}.matrix-toolbar .btn{font-size:10px;padding:7px 9px}.matrix-result{min-height:260px;overflow:auto;border:1px solid #dce7e2;border-radius:7px;padding:8px;background:#fff}.toast{position:fixed;right:18px;top:82px;z-index:7000;background:#fff;border:1px solid #cbdad3;color:#1d3a2d;border-radius:7px;padding:10px 14px;box-shadow:var(--shadow);display:none;max-width:380px}.toast.show{display:block}.toast.err{border-color:#efc3c3;color:#a92d2d}.mobilebar{display:none}
+@media(max-width:1250px){.workspace{grid-template-columns:minmax(480px,1fr) 390px}.kpis{grid-template-columns:repeat(3,1fr)}.topnav button{padding:4px 7px}.brand{width:235px}}
+@media(max-width:950px){body{overflow:auto}.topbar{height:62px}.brand{width:auto}.brand h1{font-size:15px}.brand small{display:none}.globalSearch{max-width:none}.topnav{display:none}.sidebar{top:62px;transform:translateX(-105%);transition:.2s}.sidebar.open{transform:translateX(0)}.mobilebar{display:inline-block}.main{left:0;top:62px;position:absolute;padding:9px}.kpis{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:1fr}.rightcol{order:2}.mapcard{min-height:430px}.lower{grid-template-columns:1fr}.footer{padding-bottom:20px}}
+</style></head><body><div class="app">
+<header class="topbar"><div class="brand"><button class="hamb mobilebar" id="mobileMenu">☰</button><div class="logo">ET</div><div><h1>Ethanol Logistics</h1><small>FCI | Professional Route Planner</small></div></div><input class="globalSearch" id="globalSearch" placeholder="Search location (Railhead / Distillery / City)…"><nav class="topnav"><button class="active" data-top="route">▣ Map View</button><button data-top="route">⌘ Route Planner</button><button data-top="locations">● Locations</button><button data-top="matrix">▦ Distance Matrix</button><button data-top="settings">⚙ Settings</button></nav><div class="user"><div class="avatar">AM</div><div>Ashok Meena<small>FCI - Jabalpur</small></div></div></header>
+<aside class="sidebar" id="sidebar"><div class="tabs"><button class="tab active" data-tab="route">Dashboard / Map View</button><button class="tab" data-tab="route">Route Planner</button><button class="tab" data-tab="locations">Locations</button><button class="tab" data-tab="matrix">Distance Matrix</button><button class="tab" data-tab="route">Movement Planning</button><button class="tab" data-tab="route">Reports</button><button class="tab" data-tab="settings">Settings</button></div><div class="sidebox"><h4>System Status</h4><div class="sideitem"><span>● Map Service</span><span class="online">Online</span></div><div class="sideitem"><span>● Routing Engine</span><span class="online">Online</span></div><div class="sideitem"><span>● Data Sync</span><span class="online">Ready</span></div><div class="sideitem"><span>● Last Updated</span><span class="online">Today</span></div></div><div class="sidebox"><h4>Quick Stats</h4><div class="sideitem"><span>Locations</span><b id="sideLocations">23</b></div><div class="sideitem"><span>Railheads</span><b id="sideRailheads">9</b></div><div class="sideitem"><span>Distilleries</span><b id="sideDistilleries">14</b></div></div><div class="sidefooter">Ethanol Logistics v3.0<br>Designed for FCI | Govt. of India<br><br><b>FOOD CORPORATION OF INDIA</b><br>Ensuring Food Security</div></aside>
+<main class="main"><div class="kpis"><div class="kpi"><div class="ico">👤</div><b id="kpiLocations">23</b><span>Total Locations</span></div><div class="kpi"><div class="ico">🚆</div><b id="kpiRailheads">9</b><span>Railheads</span></div><div class="kpi"><div class="ico">🏭</div><b id="kpiDistilleries">14</b><span>Distilleries</span></div><div class="kpi"><div class="ico">🛣️</div><b id="kpiDistance">1,245 km</b><span>Total Planned Distance</span></div><div class="kpi"><div class="ico">📍</div><b id="kpiRoutes">28</b><span>Active Routes</span></div><div class="kpi"><div class="ico">✓</div><b>100%</b><span>System Uptime</span></div></div>
+<div class="workspace"><div class="mapcard"><div class="maphead"><h3>🗺 Map View</h3><div class="maptabs"><button id="mapModeRoad" class="active">Map View</button><button id="mapModeSatellite">Satellite</button><button id="mapCountry">India ▾</button></div><div class="mapactions"><button class="btn" id="showAll">⊕ Show All</button><button class="btn" id="showRailheads">🔴 Railheads</button><button class="btn" id="showDistilleries">🔵 Distilleries</button><button class="btn" id="fitMap">⌁ Fit Map</button><button class="btn" id="mapFullscreen">⛶</button></div></div><div id="map" class="map"></div><div class="maptop"><div class="searchbar"><input id="mapSearch" placeholder="Search location…"><button class="btn" id="searchBtn">Search</button></div><div class="maptools"><button class="btn" id="zoomIn">＋</button><button class="btn" id="zoomOut">−</button><button class="btn" id="toggleFullscreen">⛶</button></div></div><div class="mapbottom"><div id="mapSummary" class="summary"><div class="summaryTop"><div><div class="bigkm" id="mapKm">—</div><div class="time" id="mapTime">—</div></div><div><b id="mapRouteName">Route</b><div class="summaryDetails" id="mapRouteSub">No active route</div></div></div></div><div class="legend"><span>🔴 Railhead</span><span>🔵 Distillery</span><span>🟢 Selected</span><span>━ Route</span></div></div></div>
+<div class="rightcol"><section class="section active" id="sec-route"><div class="routecard"><div class="cardtitle"><h3>🗺 Route Planner</h3><button class="btn" id="clearRoute">Clear All</button></div><div class="field"><label>Origin (From)</label><select id="origin"></select></div><div class="field"><label>Via Stops (Optional)</label><select id="viaSelect"><option value="">+ Add intermediate stop</option></select><div id="viaList" class="route-list" style="margin-top:6px"></div></div><div class="field"><label>Destination (To)</label><select id="destination"></select></div><div class="grid2"><div class="field"><label>Vehicle Type</label><select id="profile"><option value="trucking">🚚 Truck / HCV</option><option value="driving">🚗 Car / LMV</option></select></div><div class="field"><label>Route Type</label><select id="resource"><option value="route_adv">⚡ Standard Road Distance</option><option value="route_eta">Traffic / ETA (Car only)</option></select></div></div><div class="toolbar"><button class="btn primary" id="calc" style="flex:1">▶ Calculate Route</button><button class="btn" id="fit">⌁ Fit Route</button></div><div id="routeStatus" class="status" style="margin-top:8px">Ready — select origin and destination.</div><div class="hint" style="margin-top:6px">Distance/time are calculated separately for each road leg using the selected vehicle and route resource.</div></div><div class="routecard"><div class="cardtitle"><h3>📍 Route Summary</h3><span>Mappls road calculation</span></div><div class="metricgrid"><div class="metric"><b id="km">—</b><span>Total Distance</span></div><div class="metric"><b id="time">—</b><span>Estimated Time</span></div><div class="metric"><b id="legs">—</b><span>Route Legs</span></div><div class="metric"><b id="vehicleLabel">HCV</b><span>Vehicle Type</span></div></div></div><div class="routecard"><div class="cardtitle"><h3>🧭 Route Sequence</h3></div><div id="routeSequence" class="empty">No route calculated.</div></div><div class="routecard"><div class="cardtitle"><h3>📋 Route Details</h3></div><div id="routeDetails" class="routepanel empty">Calculate a route to see details.</div></div></section>
+<section class="section" id="sec-locations"><div class="card"><h3>📍 Location Management</h3><div class="toolbar" style="margin:10px 0"><button class="btn green" id="addLocation">＋ Add Location</button><button class="btn" id="exportData">Export JSON</button><button class="btn" id="importData">Import JSON</button><input type="file" id="fileInput" accept="application/json" hidden></div><input class="input" id="locationSearch" placeholder="Search railhead or distillery"></div><div class="card" style="margin-top:10px"><div class="scrollx"><table class="table"><thead><tr><th>Name</th><th>Type</th><th>Coordinates</th><th>Action</th></tr></thead><tbody id="locationTable"></tbody></table></div></div></section>
+<section class="section" id="sec-matrix">
+  <div class="card">
+    <div class="cardtitle">
+      <div><h3>▦ Distance Matrix</h3><span class="hint">Road distance and travel time between selected locations</span></div>
+      <span class="badge" id="matrixCount">0 selected</span>
+    </div>
+    <div class="matrix-layout">
+      <div>
+        <div class="matrix-toolbar">
+          <button class="btn" id="matrixRailheads">Railheads</button>
+          <button class="btn" id="matrixDistilleries">Distilleries</button>
+          <button class="btn" id="matrixFirst8">First 8</button>
+          <button class="btn" id="matrixClear">Clear</button>
+        </div>
+        <div class="matrix-pick" id="matrixPicker"></div>
+        <div class="toolbar" style="margin-top:9px">
+          <button class="btn primary" id="runMatrix">Calculate Matrix</button>
+        </div>
+        <div class="hint" style="margin-top:8px">Select 2–8 locations. Vehicle type and route resource are taken from the Route Planner settings.</div>
+      </div>
+      <div class="matrix-result" id="matrixResult"><div class="empty">Select locations and click Calculate Matrix.</div></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec-settings"><div class="card"><h3>⚙ Mappls Connection</h3><div class="field" style="margin-top:10px"><label>Web Static Key</label><input class="input" id="mapKey" type="password" autocomplete="off" placeholder="Paste your Mappls Web Static Key"></div><label class="hint"><input type="checkbox" id="rememberKey"> Remember key on this browser</label><p class="hint">For GitHub Pages, whitelist <b>ashokmeena1988.github.io</b> in your Mappls app.</p><div class="toolbar"><button class="btn primary" id="saveKey">Save & Initialize</button><button class="btn" id="clearKey">Forget Key</button><button class="btn" id="testMappls">Test Connection</button></div><div id="sdkStatus" class="status" style="margin-top:8px">SDK status: not initialized.</div><div id="apiDiag" class="hint" style="margin-top:8px"></div></div><div class="card" style="margin-top:10px"><h3>⚙ Data Management</h3><div class="toolbar" style="margin-top:10px"><button class="btn" id="resetData">Reset original 23</button><button class="btn danger" id="clearLocal">Clear local changes</button></div></div></section></div></div>
+<div class="footer"><span>Food Corporation of India &nbsp;|&nbsp; Ethanol Supply Chain Management System</span><span><strong>● Secure</strong> &nbsp;•&nbsp; Reliable &nbsp;•&nbsp; Efficient</span></div></main></div><div id="modal" class="modal"><div class="modalbox"><div class="modalhead"><h3 id="modalTitle">Location</h3><button class="close" id="closeModal">×</button></div><div class="grid2"><div class="field"><label>Name</label><input class="input" id="fName"></div><div class="field"><label>Type</label><select class="input" id="fType"><option>Railhead</option><option>Distillery</option><option>Depot</option><option>Plant</option><option>Warehouse</option><option>Other</option></select></div><div class="field"><label>Latitude</label><input class="input" id="fLat" type="number" step="any"></div><div class="field"><label>Longitude</label><input class="input" id="fLng" type="number" step="any"></div></div><div class="toolbar"><button class="btn primary" id="saveLocation">Save</button><button class="btn danger" id="deleteLocation">Delete</button></div></div></div><div id="toast" class="toast"></div>
+<script>
+const ORIGINAL_LOCATIONS = [{"id":"R-balaghat","name":"Balaghat","type":"Railhead","lat":21.811528,"lng":80.199917},{"id":"R-bhedaghat","name":"Bhedaghat","type":"Railhead","lat":23.169972,"lng":79.797778},{"id":"R-gadarwara","name":"Gadarwara","type":"Railhead","lat":22.899806,"lng":78.791361},{"id":"R-garha","name":"Garha","type":"Railhead","lat":23.1385,"lng":79.865194},{"id":"R-jhukai","name":"Jhukai","type":"Railhead","lat":23.98575,"lng":80.431556},{"id":"R-mandla-fort","name":"Mandla Fort","type":"Railhead","lat":22.5845,"lng":80.355472},{"id":"R-niwar","name":"Niwar","type":"Railhead","lat":23.718722,"lng":80.368806},{"id":"R-seoni","name":"Seoni","type":"Railhead","lat":22.075556,"lng":79.54825},{"id":"R-tirodi","name":"Tirodi","type":"Railhead","lat":21.682917,"lng":79.717472},{"id":"D-9","name":"ASSOCIATED ALCOHOLS & BREWERIES LIMITED","type":"Distillery","lat":22.301194,"lng":75.99475},{"id":"D-10","name":"AVJ Agrico Pvt. Ltd.","type":"Distillery","lat":21.553472,"lng":78.802194},{"id":"D-11","name":"BETUL BIOFUELS PRIVATE LIMITED","type":"Distillery","lat":21.886528,"lng":77.694139},{"id":"D-12","name":"GREAT GALLEON VENTURES LIMITED","type":"Distillery","lat":22.670361,"lng":75.477583},{"id":"D-13","name":"GULSHAN POLYOLS LTD","type":"Distillery","lat":21.549194,"lng":78.817528},{"id":"D-14","name":"GULSHAN POLYOLS LTD DEP MP","type":"Distillery","lat":21.549194,"lng":78.817528},{"id":"D-15","name":"JAKSON BIOFUELS PVT. LTD (ETHAN NATURAL BIO-FUEL PRIVATE LIMITED.)","type":"Distillery","lat":21.738167,"lng":79.98},{"id":"D-16","name":"K P BIOFUELS PRIVATE LIMITED","type":"Distillery","lat":22.945861,"lng":78.353111},{"id":"D-17","name":"LOHIYA GREEN ENERGY PRIVATE LIMITED","type":"Distillery","lat":21.739639,"lng":78.79575},{"id":"D-18","name":"NARMADA SUGAR PVT LTD","type":"Distillery","lat":22.852667,"lng":78.651111},{"id":"D-19","name":"ORIENT ETHANOL INDUSTRIES PRIVATE LIMTED","type":"Distillery","lat":23.102778,"lng":80.194639},{"id":"D-20","name":"SHREE BALAJI BIOSOLUTIONS FUELS LLP","type":"Distillery","lat":23.156972,"lng":79.664694},{"id":"D-21","name":"SMS BIOFUEL PRIVATE LIMITED","type":"Distillery","lat":22.390528,"lng":77.294389},{"id":"D-22","name":"VISAG BIOFUELS PRIVATE LIMITED","type":"Distillery","lat":21.769444,"lng":80.0}];
+const COLORS={Railhead:'#2388ff',Distillery:'#ff9f2f',Depot:'#22d3b8',Plant:'#ef6a6a',Warehouse:'#c792ea',Other:'#8ea0c2'};
+let locations=loadLocations(), map=null, markers=[], routeLayer=null, directionPlugin=null, lastRoute=null, editingId=null, viaIds=[];
+let availableMapStyles=[];
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function toast(msg,err=false){const t=$('toast');t.textContent=msg;t.className='toast show'+(err?' err':'');clearTimeout(window._tt);window._tt=setTimeout(()=>t.className='toast',3500)}
+function loadLocations(){try{const x=JSON.parse(localStorage.getItem('ethanol_locations_v6'));if(Array.isArray(x)&&x.length)return x}catch(e){}return ORIGINAL_LOCATIONS.map(x=>({...x}));}
+function saveLocations(){localStorage.setItem('ethanol_locations_v6',JSON.stringify(locations));}
+function getLoc(id){return locations.find(x=>x.id===id)}
+function fillSelects(){const opts=locations.map(l=>`<option value="${esc(l.id)}">${esc(l.name)} — ${esc(l.type)}</option>`).join('');$('origin').innerHTML=opts;$('destination').innerHTML=opts;$('viaSelect').innerHTML='<option value="">+ Add intermediate stop</option>'+opts; if(locations.length>1){$('origin').value=locations.find(x=>x.name==='Bhedaghat')?.id||locations[0].id;$('destination').value=locations.find(x=>x.name==='GULSHAN POLYOLS LTD DEP MP')?.id||locations.find(x=>x.type==='Distillery')?.id||locations[1].id} renderVia(); renderTable(); renderMatrixPicker(); if($('kpiLocations')){$('kpiLocations').textContent=locations.length;$('kpiRailheads').textContent=locations.filter(x=>x.type==='Railhead').length;$('kpiDistilleries').textContent=locations.filter(x=>x.type==='Distillery').length;$('sideLocations').textContent=locations.length;$('sideRailheads').textContent=locations.filter(x=>x.type==='Railhead').length;$('sideDistilleries').textContent=locations.filter(x=>x.type==='Distillery').length}}
+function renderVia(){ $('viaList').innerHTML=viaIds.map((id,i)=>{const l=getLoc(id);return l?`<div class="stop"><span class="dot" style="background:${COLORS[l.type]||COLORS.Other}"></span><span style="flex:1">${esc(l.name)}</span><button class="btn small" onclick="removeVia(${i})">×</button></div>`:''}).join('');}
+window.removeVia=i=>{viaIds.splice(i,1);renderVia()};
+function pinHtml(l){return `<div class="pin" style="background:${COLORS[l.type]||COLORS.Other}" title="${esc(l.name)}">${l.type==='Railhead'?'R':'D'}</div>`}
+function loadScriptOnce(src,id){return new Promise((resolve,reject)=>{
+  if(id){const old=document.getElementById(id); if(old && old.dataset.loaded==='1'){resolve();return;} if(old) old.remove();}
+  const s=document.createElement('script'); if(id)s.id=id; s.async=true; s.src=src;
+  s.onload=()=>{s.dataset.loaded='1'; resolve();};
+  s.onerror=()=>{s.remove(); reject(new Error('Failed to load Mappls script: '+src.replace(/access_token=[^&]+/,'access_token=***')))};
+  document.head.appendChild(s);
+})}
+async function loadMappls(key){
+  if(!key) throw new Error('Mappls Web Static Key is required.');
+  // Use the same working legacy Web SDK flow verified by the diagnostic page.
+  if(typeof mappls==='undefined' || typeof mappls.Map!=='function'){
+    await loadScriptOnce('https://sdk.mappls.com/map/sdk/web?v=3.0&access_token='+encodeURIComponent(key),'mappls-web-sdk');
+  }
+  if(typeof mappls==='undefined' || typeof mappls.Map!=='function') throw new Error('Mappls Web SDK did not initialize. Check Web Maps SDK access and domain whitelist.');
+  if(typeof mappls.direction!=='function'){
+    await loadScriptOnce('https://sdk.mappls.com/map/sdk/plugins?access_token='+encodeURIComponent(key)+'&v=3.0&libraries=direction','mappls-direction-plugin');
+  }
+  if(typeof mappls.direction!=='function') throw new Error('Mappls Directions Plugin did not initialize. Check Directions access in Mappls Console.');
+  // getDistance is the correct Mappls web method for routable distance/time matrices.
+  if(typeof mappls.getDistance!=='function'){
+    await loadScriptOnce('https://sdk.mappls.com/map/sdk/plugins?v=3.0&access_token='+encodeURIComponent(key),'mappls-distance-plugin');
+  }
+  return true;
+}
+async function initMap(){
+  const key=$('mapKey').value.trim() || sessionStorage.getItem('ethanol_mappls_key_v6') || localStorage.getItem('ethanol_mappls_key_v6');
+  if(!key){$('sdkStatus').className='status err';$('sdkStatus').textContent='Enter your Mappls Web Static Key first.';return false}
+  $('sdkStatus').className='status';$('sdkStatus').textContent='Loading Mappls Web SDK + Directions…';
+  try{await loadMappls(key);}catch(e){$('sdkStatus').className='status err';$('sdkStatus').textContent='Mappls load failed: '+e.message;toast(e.message,true);return false}
+  if(map) return true;
+  try{
+    map=new mappls.Map('map',{center:{lat:22.9,lng:79.2},zoom:6.5});
+    map.addListener('load',async()=>{
+      renderMarkers();
+      try{
+        if(typeof mappls.getStyles==='function'){
+          const styles=await new Promise((resolve,reject)=>{
+            let settled=false;
+            const cb=d=>{if(settled)return;settled=true;resolve(d)};
+            try{
+              const r=mappls.getStyles(cb);
+              if(r && typeof r.then==='function') r.then(cb).catch(reject);
+            }catch(e){reject(e)}
+            setTimeout(()=>{if(!settled){settled=true;reject(new Error('Style list timeout'))}},10000);
+          });
+          availableMapStyles=Array.isArray(styles)?styles:(Array.isArray(styles?.styles)?styles.styles:[]);
+        }
+      }catch(e){ console.warn('Mappls style discovery failed',e); availableMapStyles=[]; }
+      $('sdkStatus').className='status ok';
+      $('sdkStatus').textContent='✓ Mappls Map + Directions Plugin ready.';
+      toast('Mappls initialized successfully.');
+    });
+    return true;
+  }catch(e){$('sdkStatus').className='status err';$('sdkStatus').textContent='Map initialization failed: '+e.message;return false}
+}
+function renderMarkers(filterType=null){
+  if(!map)return;
+  markers.forEach(m=>{try{m.remove()}catch(e){try{mappls.remove({map,layer:m})}catch(_){}}});
+  markers=[];
+  locations.filter(l=>!filterType||l.type===filterType).forEach(l=>{
+    try{
+      const m=new mappls.Marker({
+        map,position:{lat:l.lat,lng:l.lng},html:pinHtml(l),width:32,height:32,offset:[0,-16],
+        popupHtml:`<div style="font-family:Arial;padding:8px;min-width:210px"><b>${esc(l.name)}</b><br><span style="color:#777">${esc(l.type)}</span><br><small>${l.lat.toFixed(6)}, ${l.lng.toFixed(6)}</small><br><br><button onclick="setEndpoint('${esc(l.id)}','origin')">Route From</button> <button onclick="setEndpoint('${esc(l.id)}','destination')">Route To</button></div>`
+      });
+      markers.push(m)
+    }catch(e){console.warn(e)}
+  });
+}
+window.setEndpoint=(id,which)=>{$(which).value=id;toast(`${which==='origin'?'Origin':'Destination'} set.`)};
+function fitAll(){if(!map||!locations.length)return;const b=new mappls.LatLngBounds();locations.forEach(l=>b.extend({lat:l.lat,lng:l.lng}));try{map.fitBounds(b,{padding:50})}catch(e){map.setCenter({lat:22.9,lng:79.2})}}
+function clearRoute(){if(routeLayer){try{mappls.remove({map,layer:routeLayer})}catch(e){}routeLayer=null}lastRoute=null;$('km').textContent='—';$('time').textContent='—';$('legs').textContent='—';$('routeSequence').innerHTML='<div class="empty">No route calculated.</div>';$('routeDetails').innerHTML='<div class="empty">Calculate a route to see details.</div>';$('mapSummary').classList.remove('show');$('routeStatus').className='status';$('routeStatus').textContent='Ready.'}
+function hav(a,b){const R=6371000,p=Math.PI/180,dLat=(b.lat-a.lat)*p,dLon=(b.lng-a.lng)*p;const x=Math.sin(dLat/2)**2+Math.cos(a.lat*p)*Math.cos(b.lat*p)*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(x));}
+function parseNum(v){if(typeof v==='number')return v;if(typeof v==='string'){const m=v.replace(/,/g,'').match(/[-+]?\d+(?:\.\d+)?/);return m?Number(m[0]):null}return null}
+function findMetric(obj,keys,seen=new Set(),depth=0){
+  if(!obj||depth>8||seen.has(obj)||typeof obj!=='object')return null;
+  seen.add(obj);
+  // Prefer exact key matches before broader matches. This prevents an instruction-level
+  // "distance" from being mistaken for the route total.
+  for(const k of Object.keys(obj)){
+    const lk=k.toLowerCase();
+    if(keys.some(x=>lk===x)){
+      const n=parseNum(obj[k]);
+      if(n!==null)return {key:k,val:n,raw:obj[k],depth};
+    }
+  }
+  for(const k of Object.keys(obj)){
+    const r=findMetric(obj[k],keys,seen,depth+1);
+    if(r)return r;
+  }
+  return null;
+}
+function routeMetricCandidates(obj){
+  const out=[];
+  const seen=new Set();
+  function walk(v,path=[],depth=0){
+    if(!v||depth>8||seen.has(v)||typeof v!=='object')return;
+    seen.add(v);
+    if(Array.isArray(v)){v.forEach((x,i)=>walk(x,path.concat(i),depth+1));return}
+    const keys=Object.keys(v);
+    for(const k of keys){
+      const lk=k.toLowerCase(), val=v[k], n=parseNum(val);
+      if(n!==null && (lk==='distance'||lk==='duration'||lk==='time'||lk==='traveltime'||lk==='totaldistance'||lk==='totalduration')){
+        out.push({key:lk,val:n,raw:val,path:path.concat(k),depth});
+      }
+      walk(val,path.concat(k),depth+1);
+    }
+  }
+  walk(obj);
+  return out;
+}
+function extractDistanceMeters(data){
+  const d = data?.results?.distances ?? data?.results?.[0]?.distances ?? data?.distances;
+  if(Array.isArray(d)){
+    const flat=[];
+    (function walk(v){
+      if(Array.isArray(v)) v.forEach(walk);
+      else { const n=parseNum(v); if(n!==null && n>=0) flat.push(n); }
+    })(d);
+    if(flat.length>1) return flat[1];
+    if(flat.length===1) return flat[0];
+  }
+  const c=routeMetricCandidates(data).filter(x=>x.key==='distance'||x.key==='totaldistance');
+  return c.length ? c.sort((a,b)=>a.depth-b.depth)[0].val : null;
+}
+function extractDurationSeconds(data){
+  const d = data?.results?.durations ?? data?.results?.[0]?.durations ?? data?.durations;
+  if(Array.isArray(d)){
+    const flat=[];
+    (function walk(v){
+      if(Array.isArray(v)) v.forEach(walk);
+      else { const n=parseNum(v); if(n!==null && n>=0) flat.push(n); }
+    })(d);
+    if(flat.length>1) return flat[1];
+    if(flat.length===1) return flat[0];
+  }
+  const c=routeMetricCandidates(data).filter(x=>['duration','time','traveltime','totalduration'].includes(x.key));
+  return c.length ? c.sort((a,b)=>a.depth-b.depth)[0].val : null;
+}
+function normalizeDistanceKm(v){
+  if(v==null||!Number.isFinite(Number(v)))return null;
+  const n=Number(v);
+  // Mappls distance matrix returns routable distance; normalize common meter output.
+  return n>1000?n/1000:n;
+}
+function formatDurationSeconds(sec){
+  if(sec==null)return null;
+  const n=Number(sec); if(!Number.isFinite(n))return null;
+  if(n>100000)return Math.round(n/60)+' min';
+  if(n>=3600)return Math.floor(n/3600)+' hr '+Math.round((n%3600)/60)+' min';
+  if(n>=60)return Math.floor(n/60)+' min';
+  return Math.round(n)+' sec';
+}
+async function mapplsDistance(a,b,profile,resource){
+  if(typeof mappls.getDistance!=='function')throw new Error('Mappls getDistance method is unavailable.');
+  let matrixResource='distance_matrix';
+if(profile==='driving' && resource==='route_eta') matrixResource='distance_matrix_eta';
+else if(profile==='driving' && resource==='route_traffic') matrixResource='distance_matrix_traffic';
+  return new Promise((resolve,reject)=>{
+    let done=false;
+    const finish=data=>{
+      if(done)return; done=true;
+      const meters=extractDistanceMeters(data), seconds=extractDurationSeconds(data);
+      if(meters==null){
+        console.log('Mappls getDistance response',data);
+        const code=data?.responseCode ?? 'unknown'; const resultCode=data?.results?.code ?? data?.results?.[0]?.code ?? 'unknown';
+        reject(new Error(`Mappls returned no routable distance (HTTP/API: ${code}, result: ${resultCode}). Check CORS/API access, coordinates, and Mappls service access.`));
+        return
+      }
+      resolve({km:normalizeDistanceKm(meters),seconds,time:formatDurationSeconds(seconds),raw:data});
+    };
+    try{
+      mappls.getDistance({
+        coordinates:`${a.lng},${a.lat};${b.lng},${b.lat}`,
+        resource:matrixResource,
+        profile:profile,
+        rtype:0,
+        region:'ind'
+      },finish);
+      setTimeout(()=>{if(!done){done=true;reject(new Error('Mappls distance request timed out.'))}},20000);
+    }catch(e){reject(e)}
+  });
+}
+async function calculateLegMetrics(points,profile,resource){
+  let totalKm=0,totalSeconds=0,hasTime=true,legs=[];
+  for(let i=0;i<points.length-1;i++){
+    const m=await mapplsDistance(points[i],points[i+1],profile,resource);
+    totalKm+=m.km;
+    if(m.seconds!=null)totalSeconds+=m.seconds; else hasTime=false;
+    legs.push({from:points[i],to:points[i+1],km:m.km,time:m.time});
+  }
+  return {km:totalKm,time:hasTime?formatDurationSeconds(totalSeconds):null,legs};
+}
+function durationText(v){if(v==null)return null;let s=String(v).toLowerCase();if(/hour|hr|min|sec/.test(s))return s.replace(/seconds?/g,'sec').replace(/minutes?/g,'min').replace(/hours?/g,'hr');let n=Number(v);if(!Number.isFinite(n))return null;if(n>100000)return Math.round(n/60)+' min';if(n>3600)return Math.floor(n/3600)+' hr '+Math.round((n%3600)/60)+' min';if(n>180)return Math.floor(n/60)+' min';return Math.round(n)+' sec'}
+function renderRouteMetrics(km,time,source){$('km').textContent=km!=null?km.toFixed(1)+' KM':'—';$('time').textContent=time||'—';$('legs').textContent=String(1+viaIds.length);$('vehicleLabel').textContent=$('profile').value==='trucking'?'HCV':'LMV';$('mapKm').textContent=km!=null?km.toFixed(1)+' KM':'—';$('mapTime').textContent=time||'Time unavailable';$('mapSummary').classList.add('show');$('mapRouteName').textContent='Active Road Route';$('mapRouteSub').textContent=source?`Calculated from ${source}.`:'Calculated route.'}
+function showSequence(){const ids=[$('origin').value,...viaIds,$('destination').value];$('routeSequence').innerHTML=`<div class="route-list">${ids.map((id,i)=>{const l=getLoc(id);return `<div class="stop"><span class="dot" style="background:${i===0?'#35a7ff':i===ids.length-1?'#ff5d6c':COLORS[l?.type]||'#ffb84d'}"></span><span style="flex:1"><b>${i===0?'ORIGIN':i===ids.length-1?'DESTINATION':'VIA '+i}</b><br>${esc(l?.name||'Unknown')}</span></div>`}).join('')}</div>`}
+function renderLegMetrics(legs){
+  const el=$('routeDetails'); if(!el||!legs?.length)return;
+  let h='<table class="table"><thead><tr><th>#</th><th>From</th><th>To</th><th>Road Distance</th><th>Travel Time</th></tr></thead><tbody>';
+  legs.forEach((x,i)=>{h+=`<tr><td>${i+1}</td><td>${esc(x.from.name)}</td><td>${esc(x.to.name)}</td><td><b>${x.km.toFixed(1)} KM</b></td><td>${esc(x.time||'—')}</td></tr>`});
+  h+='</tbody></table>'; el.innerHTML=h;
+}
+
+function renderTable(){
+  const body=$('locationTable');
+  if(!body)return;
+  const q=($('locationSearch')?.value||'').trim().toLowerCase();
+  const rows=locations.filter(l=>!q||l.name.toLowerCase().includes(q)||l.type.toLowerCase().includes(q));
+  body.innerHTML=rows.map(l=>`<tr>
+    <td><b>${esc(l.name)}</b></td>
+    <td><span class="badge">${esc(l.type)}</span></td>
+    <td>${Number(l.lat).toFixed(6)}, ${Number(l.lng).toFixed(6)}</td>
+    <td><button class="btn small" data-edit-location="${esc(l.id)}">Edit</button>
+        <button class="btn small danger" data-delete-location="${esc(l.id)}">Delete</button></td>
+  </tr>`).join('') || '<tr><td colspan="4" class="empty">No locations found.</td></tr>';
+  body.querySelectorAll('[data-edit-location]').forEach(b=>b.onclick=()=>openLocationModal(b.dataset.editLocation));
+  body.querySelectorAll('[data-delete-location]').forEach(b=>b.onclick=()=>deleteLocationById(b.dataset.deleteLocation));
+}
+
+function openLocationModal(id=null){
+  editingId=id;
+  const l=id?getLoc(id):null;
+  $('modalTitle').textContent=l?'Edit Location':'Add Location';
+  $('fName').value=l?.name||'';
+  $('fType').value=l?.type||'Railhead';
+  $('fLat').value=l?.lat??'';
+  $('fLng').value=l?.lng??'';
+  $('deleteLocation').style.display=l?'inline-block':'none';
+  $('modal').classList.add('show');
+}
+
+function closeLocationModal(){editingId=null;$('modal').classList.remove('show')}
+function deleteLocationById(id){
+  const l=getLoc(id); if(!l)return;
+  if(!confirm(`Delete "${l.name}"?`))return;
+  locations=locations.filter(x=>x.id!==id); saveLocations(); fillSelects();
+  if(map)renderMarkers(); toast('Location deleted.');
+}
+
+function saveLocationForm(){
+  const name=$('fName').value.trim(), type=$('fType').value;
+  const lat=Number($('fLat').value), lng=Number($('fLng').value);
+  if(!name||!Number.isFinite(lat)||!Number.isFinite(lng)||lat<-90||lat>90||lng<-180||lng>180)
+    return toast('Enter a valid name, latitude and longitude.',true);
+  if(editingId){
+    const l=getLoc(editingId); Object.assign(l,{name,type,lat,lng});
+  }else{
+    locations.push({id:'U-'+Date.now(),name,type,lat,lng});
+  }
+  saveLocations(); fillSelects(); if(map)renderMarkers(); closeLocationModal(); toast('Location saved.');
+}
+
+function routePoints(){
+  const ids=[$('origin').value,...viaIds,$('destination').value];
+  return ids.map(getLoc).filter(Boolean);
+}
+
+function removeDirectionLayer(){
+  if(!directionPlugin)return;
+  try{directionPlugin.remove?.()}catch(_){}
+  try{mappls.remove({map,layer:directionPlugin})}catch(_){}
+  directionPlugin=null;
+}
+
+function renderMapplsRoute(points,profile,resource){
+  if(!map || typeof mappls.direction!=='function') throw new Error('Mappls Directions Plugin is not available.');
+  removeDirectionLayer();
+
+  const start=points[0];
+  const end=points[points.length-1];
+  const via=points.slice(1,-1).map((p,i)=>({
+    label:p.name,
+    geoposition:`${p.lat},${p.lng}`
+  }));
+
+  const opt={
+    map,
+    start:`${start.lat},${start.lng}`,
+    end:{label:end.name,geoposition:`${end.lat},${end.lng}`},
+    profile,
+    resource,
+    rtype:0,
+    via:via.length===1?via[0]:(via.length?via:undefined),
+    fitbounds:false,
+    search:false,
+    geolocation:false,
+    autoSubmit:true,
+    divId:'hiddenDirections',
+    divWidth:'320px',
+    steps:false,
+    stepPopup:false,
+    iconPopup:false,
+    connector:true,
+    strokeWidth:7,
+    activeStrokeWidth:8,
+    callback:function(data){
+      console.log('Mappls direction callback:',data);
+      $('routeStatus').className='status ok';
+      $('routeStatus').textContent='✓ Road route plotted on Mappls.';
+    }
+  };
+
+  // Remove undefined via so the plugin receives a clean options object.
+  if(!via.length)delete opt.via;
+  try{
+    directionPlugin=mappls.direction(opt);
+  }catch(e){
+    console.error('Mappls direction() failed:',e);
+    throw new Error('Mappls Directions could not draw the route: '+(e?.message||e));
+  }
+  if(!directionPlugin)console.warn('Mappls direction() returned no layer handle.');
+  return directionPlugin;
+}
+
+async function calculateRoute(){
+  const points=routePoints();
+  if(points.length<2)return toast('Select a valid origin and destination.',true);
+  if(!(await initMap()))return;
+
+  const profile=$('profile').value;
+  const resource=$('resource').value==='route_eta' && profile==='trucking'
+    ? 'route_adv' : $('resource').value;
+
+  $('routeStatus').className='status';
+  $('routeStatus').textContent='Calculating road route…';
+  $('calc').disabled=true;
+
+  try{
+    // First calculate accurate distance/time for every leg.
+    const result=await calculateLegMetrics(points,profile,resource);
+
+    // Then use the Mappls Directions Plugin to draw the actual road geometry.
+    renderMapplsRoute(points,profile,resource);
+
+    lastRoute={
+      km:result.km,
+      time:result.time,
+      legs:result.legs,
+      coords:points.map(p=>[p.lng,p.lat])
+    };
+
+    renderRouteMetrics(result.km,result.time,'Mappls road distance');
+    showSequence();
+    renderLegMetrics(result.legs);
+
+    $('routeStatus').className='status ok';
+    $('routeStatus').textContent=`✓ Route calculated — ${result.km.toFixed(1)} KM`;
+    $('kpiDistance').textContent=result.km.toFixed(1)+' km';
+    toast('Road route plotted successfully.');
+  }catch(e){
+    console.error('Route calculation error',e);
+    $('routeStatus').className='status err';
+    $('routeStatus').textContent='Route calculation failed: '+e.message;
+    toast(e.message,true);
+  }finally{
+    $('calc').disabled=false;
+  }
+}
+
+function renderDetails(res,coords,km,time,legs){
+  if(legs?.length){renderLegMetrics(legs);return}
+  $('routeDetails').innerHTML=`<div class="small">Road distance: <b>${km!=null?km.toFixed(1)+' KM':'—'}</b> · Estimated time: <b>${esc(time||'—')}</b></div>`;
+}
+
+function updateMatrixCount(){
+  const n=document.querySelectorAll('.mcheck:checked').length;
+  $('matrixCount').textContent=n+' selected';
+}
+function renderMatrixPicker(selectedIds=null){
+  const chosen=new Set(selectedIds||locations.slice(0,6).map(x=>x.id));
+  $('matrixPicker').innerHTML=locations.map(l=>`<label><input type="checkbox" class="mcheck" value="${esc(l.id)}" ${chosen.has(l.id)?'checked':''}><span><b>${esc(l.name)}</b><br><span class="hint">${esc(l.type)}</span></span></label>`).join('');
+  document.querySelectorAll('.mcheck').forEach(x=>x.addEventListener('change',updateMatrixCount));
+  updateMatrixCount();
+}
+async function getMatrixRow(source, destinations, profile, resource){
+  return await new Promise((resolve,reject)=>{
+    let done=false;
+    const finish=d=>{
+      if(done)return;
+      done=true;
+      if(!d)return reject(new Error('Mappls returned an empty response.'));
+      if(d.responseCode && Number(d.responseCode)!==200){
+        const rc=Number(d.responseCode);
+        const msg=rc===401?'Mappls key is not authorized for Distance Matrix.':
+          rc===403?'Distance Matrix is blocked by Mappls key permissions, domain whitelist, CORS, or API quota.':
+          `Mappls Distance Matrix returned responseCode ${rc}.`;
+        return reject(new Error(msg));
+      }
+      const r=d.results;
+      const distances=r?.distances;
+      const durations=r?.durations;
+      if(!Array.isArray(distances))return reject(new Error('Mappls did not return distances. Enable Distance Matrix/getDistance access and CORS for this key.'));
+      const drow=Array.isArray(distances[0])?distances[0]:distances;
+      const trow=Array.isArray(durations?.[0])?durations[0]:(Array.isArray(durations)?durations:[]);
+      resolve({distances:drow,durations:trow,raw:d});
+    };
+    const coords=[source,...destinations].map(p=>`${p.lng},${p.lat}`).join(';');
+    const destinationIndexes=destinations.map((_,i)=>String(i+1)).join(';');
+    try{
+      // Use one-to-many calls instead of many-to-many. This is more reliable across
+      // Mappls Web SDK versions and still needs only N requests for an N×N matrix.
+      mappls.getDistance({
+        coordinates:coords,
+        resource,
+        profile,
+        rtype:0,
+        region:'ind',
+        sources:'0',
+        destinations:destinationIndexes
+      },finish);
+      setTimeout(()=>{if(!done){done=true;reject(new Error('Mappls Distance Matrix request timed out.'))}},30000);
+    }catch(e){reject(e)}
+  });
+}
+
+async function runMatrix(){
+  const ids=[...document.querySelectorAll('.mcheck:checked')].map(x=>x.value);
+  if(ids.length<2||ids.length>8)return toast('Select 2 to 8 locations.',true);
+  if(!(await initMap()))return;
+
+  $('matrixResult').innerHTML='<div class="empty">Calculating Mappls road distance matrix…</div>';
+  const profile=$('profile').value;
+  let resource=$('resource').value;
+  if(profile==='trucking' && resource!=='route_adv')resource='route_adv';
+  resource=resource==='route_eta'?'distance_matrix_eta':resource==='route_traffic'?'distance_matrix_traffic':'distance_matrix';
+
+  const points=ids.map(getLoc);
+  const rows=[];
+  try{
+    for(let i=0;i<points.length;i++){
+      const other=points;
+      const row=await getMatrixRow(points[i],other,profile,resource);
+      rows.push(row);
+      $('matrixResult').innerHTML=`<div class="empty">Calculating row ${i+1} of ${points.length}…</div>`;
+    }
+
+    let h='<table class="matrix"><thead><tr><th>From \\ To</th>'+ids.map(id=>`<th>${esc(getLoc(id).name)}</th>`).join('')+'</tr></thead><tbody>';
+    for(let i=0;i<ids.length;i++){
+      h+=`<tr><th>${esc(getLoc(ids[i]).name)}</th>`;
+      for(let j=0;j<ids.length;j++){
+        const meters=parseNum(rows[i]?.distances?.[j]);
+        const seconds=parseNum(rows[i]?.durations?.[j]);
+        const km=meters==null?null:normalizeDistanceKm(meters);
+        const tm=seconds==null?null:formatDurationSeconds(seconds);
+        h+=`<td><b>${i===j?'0.0 KM':km!=null?km.toFixed(1)+' KM':'—'}</b><br><span class="hint">${i===j?'0 min':esc(tm||'—')}</span></td>`;
+      }
+      h+='</tr>';
+    }
+    h+='</tbody></table>';
+    $('matrixResult').innerHTML=h;
+    toast('Distance Matrix calculated successfully.');
+  }catch(e){
+    console.error('Matrix error',e);
+    $('matrixResult').innerHTML=`<div class="status err">Matrix calculation failed: ${esc(e.message)}<br><small>Mappls Web getDistance requires Distance Matrix access and CORS/domain permission for this key.</small></div>`;
+    toast(e.message,true);
+  }
+}
+$('locationSearch').oninput=renderTable;
+$('addLocation').onclick=()=>openLocationModal();
+$('closeModal').onclick=closeLocationModal;
+$('saveLocation').onclick=saveLocationForm;
+$('deleteLocation').onclick=()=>{if(editingId)deleteLocationById(editingId);closeLocationModal()};
+$('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeLocationModal()});
+$('runMatrix').onclick=runMatrix;
+$('calc').onclick=calculateRoute;
+$('clearRoute').onclick=clearRoute;
+$('fit').onclick=()=>{
+  if(lastRoute?.coords){
+    try{const b=new mappls.LatLngBounds();lastRoute.coords.forEach(([lng,lat])=>b.extend({lat,lng}));map.fitBounds(b,{padding:60})}
+    catch(e){fitAll()}
+  }else fitAll()
+};
+$('showAll').onclick=()=>{if(!map)return toast('Please initialize Mappls first from Settings.',true);renderMarkers();fitAll()};
+function styleNameMatches(style, terms){
+  const text=[style?.name,style?.displayName,style?.description].filter(Boolean).join(' ').toLowerCase();
+  return terms.some(t=>text.includes(t));
+}
+$('mapModeRoad').onclick=()=>{
+  if(!map)return toast('Please initialize Mappls first from Settings.',true);
+  $('mapModeRoad').classList.add('active');$('mapModeSatellite').classList.remove('active');
+  try{
+    if(typeof mappls.setStyle!=='function')throw new Error('Map style API unavailable');
+    const road=availableMapStyles.find(s=>styleNameMatches(s,['standard','road']))?.name || 'standard';
+    mappls.setStyle(road);
+  }catch(e){toast('Road style could not be changed: '+(e.message||e),true)}
+};
+$('mapModeSatellite').onclick=()=>{
+  if(!map)return toast('Please initialize Mappls first from Settings.',true);
+  try{
+    if(typeof mappls.setStyle!=='function')throw new Error('Map style API unavailable');
+    const candidates=[];
+    const discovered=availableMapStyles.find(s=>styleNameMatches(s,['satellite','hybrid']));
+    if(discovered?.name)candidates.push(discovered.name);
+    candidates.push('standard-hybrid','hybrid','satellite');
+    let applied=false;
+    for(const name of candidates){
+      try{mappls.setStyle(name);applied=true;break}catch(_){}
+    }
+    if(!applied)throw new Error('No satellite/hybrid style is enabled for this Mappls key.');
+    $('mapModeSatellite').classList.add('active');$('mapModeRoad').classList.remove('active');
+  }catch(e){
+    $('mapModeSatellite').classList.remove('active');$('mapModeRoad').classList.add('active');
+    toast(e.message||'Satellite/Hybrid style is not available for this Mappls key.',true);
+  }
+};
+$('mapCountry').onclick=()=>{toast('India view');fitAll()};
+$('fitMap').onclick=fitAll;
+$('showRailheads').onclick=()=>{renderMarkers('Railhead');fitAll()};
+$('showDistilleries').onclick=()=>{renderMarkers('Distillery');fitAll()};
+$('zoomIn').onclick=()=>{try{map.setZoom(Math.min((map.getZoom?.()||7)+1,18))}catch(e){}};
+$('zoomOut').onclick=()=>{try{map.setZoom(Math.max((map.getZoom?.()||7)-1,3))}catch(e){}};
+$('toggleFullscreen').onclick=()=>{const el=document.querySelector('.mapcard');if(!document.fullscreenElement)el.requestFullscreen?.();else document.exitFullscreen?.()};$('mapFullscreen').onclick=()=>{const el=document.querySelector('.mapcard');if(!document.fullscreenElement)el.requestFullscreen?.();else document.exitFullscreen?.()};
+if($('toggleSidebar')) $('toggleSidebar').onclick=()=>document.querySelector('.sidebar').classList.toggle('open');
+if($('mobileMenu'))$('mobileMenu').onclick=()=>document.querySelector('.sidebar')?.classList.toggle('open');
+$('viaSelect').onchange=e=>{if(e.target.value&&!viaIds.includes(e.target.value)&&e.target.value!==$('origin').value&&e.target.value!==$('destination').value){viaIds.push(e.target.value);renderVia()}e.target.value=''};
+$('testMappls').onclick=async()=>{const k=$('mapKey').value.trim()||sessionStorage.getItem('ethanol_mappls_key_v6')||localStorage.getItem('ethanol_mappls_key_v6');if(!k)return toast('Enter your Mappls Web Static Key.',true);$('apiDiag').innerHTML='Testing Map SDK and Directions Plugin…';try{await loadMappls(k);$('apiDiag').innerHTML='<span style="color:#8df2c7">✓ Web SDK loaded<br>✓ Directions Plugin loaded<br>✓ Trucking/driving profiles available<br>✓ Ready for route calculation</span>';toast('Mappls connection test passed.')}catch(e){$('apiDiag').innerHTML='<span style="color:#ff9eaa">✗ '+esc(e.message)+'</span><br><span>Check Mappls Console API allocation, whitelist <b>ashokmeena1988.github.io</b>, and allow the page origin to be sent as the HTTP Referer.</span>';toast('Mappls connection test failed.',true)}};
+$('saveKey').onclick=()=>{const k=$('mapKey').value.trim();if(!k)return toast('Enter your Mappls Web Static Key.',true);if($('rememberKey').checked)localStorage.setItem('ethanol_mappls_key_v6',k);else sessionStorage.setItem('ethanol_mappls_key_v6',k);initMap().then(ok=>{if(ok)toast('Mappls key saved and connection initialized.')})};$('clearKey').onclick=()=>{localStorage.removeItem('ethanol_mappls_key_v6');sessionStorage.removeItem('ethanol_mappls_key_v6');toast('Saved Mappls key forgotten.')};
+if($('addQuick'))$('addQuick').onclick=()=>{document.querySelector('.tab[data-tab=locations]')?.click();$('addLocation')?.click()};
+if($('matrixQuick'))$('matrixQuick').onclick=()=>document.querySelector('.tab[data-tab=matrix]')?.click();
+if($('importQuick'))$('importQuick').onclick=()=>$('importData')?.click();
+if($('exportQuick'))$('exportQuick').onclick=()=>$('exportData')?.click();
+$('exportData').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(locations,null,2)],{type:'application/json'}));a.download='ethanol-locations.json';a.click();URL.revokeObjectURL(a.href)};$('importData').onclick=()=>$('fileInput').click();$('fileInput').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!Array.isArray(x)||x.some(l=>!l.name||!Number.isFinite(Number(l.lat))||!Number.isFinite(Number(l.lng))))throw new Error('Invalid location file');locations=x.map((l,i)=>({...l,id:l.id||'I-'+Date.now()+'-'+i,lat:Number(l.lat),lng:Number(l.lng)}));saveLocations();fillSelects();renderMarkers();toast('Locations imported.')}catch(err){toast(err.message,true)}};r.readAsText(f)};$('resetData').onclick=()=>{if(confirm('Reset all locations to original 23?')){locations=ORIGINAL_LOCATIONS.map(x=>({...x}));saveLocations();fillSelects();renderMarkers();toast('Original locations restored.')}};$('clearLocal').onclick=()=>{localStorage.removeItem('ethanol_locations_v6');location.reload()};
+$('matrixRailheads').onclick=()=>{renderMatrixPicker(locations.filter(x=>x.type==='Railhead').slice(0,8).map(x=>x.id))};
+$('matrixDistilleries').onclick=()=>{renderMatrixPicker(locations.filter(x=>x.type==='Distillery').slice(0,8).map(x=>x.id))};
+$('matrixFirst8').onclick=()=>{renderMatrixPicker(locations.slice(0,8).map(x=>x.id))};
+$('matrixClear').onclick=()=>{renderMatrixPicker([])};
+$('searchBtn').onclick=()=>{const q=$('mapSearch').value.toLowerCase().trim();const l=locations.find(x=>x.name.toLowerCase().includes(q));if(!l)return toast('Location not found.',true);map.setCenter({lat:l.lat,lng:l.lng});map.setZoom(12);toast(l.name)};
+for(const t of document.querySelectorAll('.tab'))t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  const sec=$('sec-'+t.dataset.tab);
+  if(sec)sec.classList.add('active');
+  const ws=document.querySelector('.workspace');
+  if(ws)ws.classList.toggle('fullmode',t.dataset.tab!=='route');
+  if(t.dataset.tab==='matrix')renderMatrixPicker();
+};
+for(const t of document.querySelectorAll('.topnav button'))t.onclick=()=>{const tab=t.dataset.top;if(['route','locations','matrix','settings'].includes(tab)){const el=document.querySelector('.tab[data-tab=\"'+tab+'\"]');if(el)el.click();}document.querySelectorAll('.topnav button').forEach(x=>x.classList.remove('active'));t.classList.add('active')};
+$('globalSearch').onkeydown=e=>{if(e.key==='Enter'){$('mapSearch').value=e.target.value;$('searchBtn').click()}};
+(function boot(){fillSelects();const k=sessionStorage.getItem('ethanol_mappls_key_v6')||localStorage.getItem('ethanol_mappls_key_v6');if(k){$('mapKey').value=k;initMap()}else{$('sdkStatus').textContent='Enter your Mappls Web Static Key in Settings, then Save & Initialize.'}if(window.innerWidth<900)document.querySelector('.sidebar').classList.remove('open')})();
+</script>
+<div id="hiddenDirections" style="position:absolute;left:-10000px;top:0;width:320px;height:120px;visibility:hidden;overflow:hidden"></div></body></html>
