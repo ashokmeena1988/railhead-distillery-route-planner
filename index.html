@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="application-version" content="20.0.0"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' https://cdn.jsdelivr.net https://sdk.mappls.com; connect-src 'self' https://ethanol-mappls-proxy.jrms2122.workers.dev https://*.mappls.com https://*.mapmyindia.com; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https://*.mappls.com; font-src 'self' data: https:; frame-src 'self' https://*.mappls.com https://*.mapmyindia.com; worker-src 'self' blob:; form-action 'self'; upgrade-insecure-requests">
+<link rel="stylesheet" href="./styles.css?v=20.0.0"><meta name="referrer" content="strict-origin-when-cross-origin"><title>LOGISTICS INTELLIGENCE SYSTEM — Integrated Logistics, Route &amp; Transport Network Management</title><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" crossorigin="anonymous"></script>
+
+
+</head><body><div class="app">
+<header class="topbar"><div class="brand"><button class="hamb mobilebar" id="mobileMenu">☰</button><button id="desktopMenuToggle" title="Expand / Collapse Menu" aria-label="Expand / Collapse Menu">☰</button><div class="logo">LI</div><div class="brand-copy lis-brand-copy"><h1>LOGISTICS INTELLIGENCE SYSTEM</h1><small>Integrated Logistics, Route &amp; Transport Network Management</small></div></div><input class="globalSearch" id="globalSearch" placeholder="Search location (Railhead / Distillery / City)…"><nav class="topnav"><button class="active" data-top="mapview">▣ Map View</button><button data-top="routeplanner">⌘ Route Planner</button><button data-top="locations">● Locations</button><button data-top="matrix">▦ Distance Matrix</button><button data-top="reports">▤ Reports</button><button data-top="settings">⚙ Settings</button></nav><div class="top-tools"><button class="top-tool" id="langToggle" title="Hindi / English">हिं / EN</button><button class="top-tool" id="darkToggle" title="Dark mode">☾</button><button class="btn toprefresh" id="refreshPage" title="Refresh dashboard">↻ Refresh</button></div></header>
+<aside class="sidebar" id="sidebar"><div class="tabs"><button class="tab active" data-tab="mapview">Dashboard / Map View</button><button class="tab" data-tab="routeplanner">Route Planner</button><button class="tab" data-tab="locations">Locations</button><button class="tab" data-tab="matrix">Distance Matrix</button><button class="tab" data-tab="reports">Reports</button><button class="tab" data-tab="settings">Settings</button></div><div class="sidebox"><h4>System Status</h4><div class="sideitem"><span>● Map Service</span><span class="online">Online</span></div><div class="sideitem"><span>● Routing Engine</span><span class="online">Online</span></div><div class="sideitem"><span>● Data Sync</span><span class="online">Ready</span></div><div class="sideitem"><span>● Last Updated</span><span class="online">Today</span></div></div><div class="sidebox"><h4>Quick Stats</h4><div class="sideitem"><span>Locations</span><b id="sideLocations">23</b></div><div class="sideitem"><span>Railheads</span><b id="sideRailheads">9</b></div><div class="sideitem"><span>Distilleries</span><b id="sideDistilleries">14</b></div><div class="sideitem"><span>Depots</span><b id="sideDepots">159</b></div></div></aside>
+<main class="main"><div class="print-header"><h1>LOGISTICS INTELLIGENCE SYSTEM</h1><p>Integrated Logistics, Route &amp; Transport Network Management</p><p id="printDate"></p></div><div class="kpis"><div class="kpi"><div class="ico">📍</div><b id="kpiLocations">0</b><span>Locations</span></div><div class="kpi"><div class="ico">🚆</div><b id="kpiRailheads">0</b><span>Railheads</span></div><div class="kpi"><div class="ico">🏭</div><b id="kpiDistilleries">0</b><span>Distilleries</span></div><div class="kpi"><div class="ico">🏬</div><b id="kpiDepots">0</b><span>Depots</span></div><div class="kpi"><div class="ico">🧭</div><b id="kpiDistance">—</b><span>Last Route</span></div></div><div class="workspace"><div class="mapcard"><div class="maphead"><h3>🗺 Map View</h3><div class="maptabs"><button id="mapModeRoad" class="active">Map View</button><button id="mapModeSatellite">Satellite</button><button id="mapCountry">India ▾</button></div><div class="mapactions"><button class="btn routemapbtn" id="backToRoute">🧭 Route Planner</button><button class="btn" id="showAll">⊕ Show All</button><button class="btn" id="showRailheads">🔴 Railheads</button><button class="btn" id="showDistilleries">🔵 Distilleries</button><button class="btn" id="showDepots">🟢 Depots</button><button class="btn" id="fitMap">⌁ Fit Map</button><button class="btn" id="toggleRouteDetails">☰ Route Details</button><button class="btn" id="mapFullscreen">⛶</button></div></div><div id="map" class="map"></div><div class="maptop"><div class="searchbar"><input id="mapSearch" placeholder="Search location…"><button class="btn" id="searchBtn">Search</button></div><div class="maptools"><button class="btn" id="zoomIn">＋</button><button class="btn" id="zoomOut">−</button><button class="btn" id="toggleFullscreen">⛶</button></div></div><div class="mapbottom"><div id="mapSummary" class="summary"><div class="summaryTop"><div><div class="bigkm" id="mapKm">—</div><div class="time" id="mapTime">—</div></div><div><b id="mapRouteName">Route</b><div class="summaryDetails" id="mapRouteSub">No active route</div></div></div></div><div class="legend"><span>🔴 Railhead</span><span>🔵 Distillery</span><span>🟢 Depot</span><span>🟢 Selected</span><span>━ Route</span></div></div></div>
+<div class="rightcol"><section class="section routewide" id="sec-routeplanner"><div class="routegrid"><div class="routecard"><div class="cardtitle"><div><h3>🧭 Route Planner</h3><span style="display:block;margin-top:3px">Plan, calculate and review a complete road route</span></div></div><div class="field"><label>Origin (From)</label><select id="origin"></select></div><div class="field"><label>Via Stops (Optional)</label><select id="viaSelect"><option value="">+ Add intermediate stop</option></select><div id="viaList" class="route-list" style="margin-top:7px"></div></div><div class="field"><label>Destination (To)</label><select id="destination"></select></div><div class="grid2"><div class="field"><label>Vehicle Type</label><select id="profile"><option value="trucking">🚚 Truck / HCV</option><option value="driving">🚗 Car / LMV</option></select></div><div class="field"><label>Route Type</label><select id="resource"><option value="route_adv">⚡ Standard Road Distance</option><option value="route_eta">Traffic / ETA (Car only)</option></select></div></div><div class="toolbar"><button class="btn primary" id="calc" style="flex:1">▶ Calculate Route</button><button class="btn" id="fit">⌁ Fit Route</button><button class="btn routemapbtn" id="viewOnMap">🗺 View on Map</button><button class="btn danger" id="clearRoute">Clear All</button></div><div id="routeStatus" class="status" style="margin-top:10px">Ready — select origin and destination.</div><div class="hint" style="margin-top:7px">Distance and time are calculated separately for each road leg using the selected vehicle and route resource.</div><div class="hint" style="margin-top:8px;padding:9px;border:1px solid #d9e7e1;border-radius:8px;background:#f7fbf9"><b>Map & Routing source:</b> Mappls Web Maps + Mappls Routing API. <b>Route API:</b> secure Cloudflare Worker. No OpenStreetMap or Leaflet is used.</div></div><div class="routecard"><div class="cardtitle"><h3>📊 Route Summary</h3><span>Mappls road calculation</span></div><div class="metricgrid"><div class="metric"><b id="km">—</b><span>Total Distance</span></div><div class="metric"><b id="time">—</b><span>Estimated Time</span></div><div class="metric"><b id="legs">—</b><span>Route Legs</span></div><div class="metric"><b id="vehicleLabel">HCV</b><span>Vehicle Type</span></div></div><div class="summary-routes-title">Available Routes <span id="routeAltCount" class="route-alt-count">—</span></div><div id="routeAlternativeSummary" class="route-alternatives"><div class="empty">No alternative routes calculated.</div></div><div class="summary-routes-title">All Route Legs</div><div id="routeSummaryLegs" class="summary-routes"><div class="empty">No route calculated.</div></div></div><div class="routecard"><div class="cardtitle"><h3>🕘 Route History</h3><span>Saved on this browser</span></div><div id="routeHistory" class="history-list"><div class="history-empty">No calculated routes yet.</div></div><div class="toolbar" style="margin-top:7px"><button class="btn" id="clearRouteHistory">Clear History</button></div></div><div class="routecard"><div class="cardtitle"><h3>🧭 Route Sequence</h3></div><div id="routeSequence" class="empty">No route calculated.</div></div><div class="routecard"><div class="cardtitle"><h3>📋 Leg-wise Details</h3></div><div id="routeDetails" class="routepanel empty">Calculate a route to see details.</div></div></div></section>
+<section class="section" id="sec-locations"><div class="card"><h3>📍 Location Management</h3><div class="toolbar" style="margin:10px 0"><button class="btn green" id="addLocation">＋ Add Location</button><button class="btn" id="exportData">Export JSON</button><button class="btn" id="importData">Import JSON</button><input type="file" id="fileInput" accept="application/json" hidden></div><input class="input" id="locationSearch" placeholder="Search name, depot code, railhead or type"></div><div class="card" style="margin-top:10px"><div class="scrollx"><table class="table"><thead><tr><th>Name / Code</th><th>Type</th><th>Capacity</th><th>Rail Head / Cluster</th><th>GPS Coordinates</th><th>Action</th></tr></thead><tbody id="locationTable"></tbody></table></div></div></section>
+<section class="section" id="sec-matrix">
+  <div class="card">
+    <div class="cardtitle">
+      <div><h3>▦ Distance Matrix</h3><span class="hint">Road distance and travel time between selected locations</span></div>
+      <span class="badge" id="matrixCount">0 selected</span>
+    </div>
+    <div class="matrix-layout">
+      <div>
+        <div class="matrix-toolbar">
+          <button class="btn primary" id="matrixAll">All</button>
+          <button class="btn" id="matrixSourceA">Source A</button>
+          <button class="btn" id="matrixSourceB">Source B</button>
+          <button class="btn" id="matrixFirst8">First 8</button>
+          <button class="btn" id="matrixClear">Clear</button>
+        </div>
+        <div class="field" style="margin:8px 0">
+          <label>Matrix Combination</label>
+          <select class="input" id="matrixCombination">
+            <option value="railhead_distillery" selected>Railhead ↔ Distillery</option>
+            <option value="depot_distillery">Depot ↔ Distillery</option>
+            <option value="depot_railhead">Depot ↔ Railhead</option>
+            <option value="depot_depot">Depot ↔ Depot</option>
+          </select>
+        </div>
+        <div class="field" style="margin:8px 0">
+          <label>Matrix Direction</label>
+          <select class="input" id="matrixDirection">
+            <option value="both" selected>Both directions</option>
+            <option value="forward">Source A → Source B</option>
+            <option value="reverse">Source B → Source A</option>
+          </select>
+        </div>
+        <div class="matrix-pick" id="matrixPicker"></div>
+        <div class="toolbar" style="margin-top:9px">
+          <button class="btn primary" id="runMatrix">Calculate Railhead ↔ Distillery Matrix</button>
+        </div>
+        <div class="hint" style="margin-top:8px"><b>Matrix combinations:</b> Railhead ↔ Distillery, Depot ↔ Distillery, Depot ↔ Railhead, and Depot ↔ Depot. Both directions are calculated independently. Select a combination, choose the direction, then select locations. Large depot matrices can contain thousands of route cells, so calculate only the locations you need.</div>
+      </div>
+      <div class="matrix-result" id="matrixResult"><div class="empty">Select a matrix combination and click Calculate Matrix.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sec-reports"><div class="cardtitle" style="margin-bottom:8px"><div><h3>▤ Reports</h3><span class="hint">Print-ready operational reports</span></div><button class="btn primary report-print-btn" id="printReports">🖨 Print / PDF</button></div>
+  <div class="report-accordion open" id="distilleryAnalysisAccordion">
+    <button class="report-accordion-head" type="button" aria-expanded="true" data-action="toggleReportAccordion" data-target="distilleryAnalysisAccordion">
+      <span class="report-accordion-icon">📊</span>
+      <span class="report-accordion-title"><h3>Distillery Distance Analysis</h3><span class="hint">Select one distillery and analyse all connected depots/godowns and railheads by road distance.</span></span>
+      <span class="report-accordion-chevron">⌄</span>
+    </button>
+    <div class="report-accordion-body">
+      <div class="card">
+        <div class="cardtitle">
+          <div><h3>📍 Distillery Analysis Controls</h3><span class="hint">Choose a distillery, direction and generate the distance ranking.</span></div>
+          <button class="btn primary" id="exportDistilleryReport" disabled>▣ Download Excel</button>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Select Distillery</label><select class="input" id="reportDistillery"></select></div>
+          <div class="field"><label>Distance Direction</label><select class="input" id="reportDirection"><option value="source_to_distillery" selected>Depot / Railhead → Distillery</option><option value="distillery_to_source">Distillery → Depot / Railhead</option></select></div>
+        </div>
+        <div class="toolbar" style="margin-top:4px"><button class="btn primary" id="runDistilleryReport">▶ Generate Distillery Report</button><button class="btn" id="reportNearest">Nearest First</button><button class="btn" id="reportFarthest">Farthest First</button></div>
+        <div id="reportStatus" class="status" style="margin-top:8px">Select a distillery and generate the report.</div>
+      </div>
+      <div class="metricgrid" id="reportKpis">
+        <div class="metric"><b id="reportDepotCount">—</b><span>Godowns</span></div><div class="metric"><b id="reportRailheadCount">—</b><span>Railheads</span></div><div class="metric"><b id="reportNearestKm">—</b><span>Nearest Godown</span></div><div class="metric"><b id="reportFarthestKm">—</b><span>Farthest Godown</span></div>
+      </div>
+      <div class="card report-subcard"><div class="cardtitle"><h3>🏬 Godown-wise Distance Ranking</h3><span class="hint">All configured depots, shortest ↔ longest</span></div><div id="depotReport" class="scrollx"><div class="empty">Generate the report to see godown-wise ranking.</div></div></div>
+      <div class="card report-subcard"><div class="cardtitle"><h3>🚆 Railhead-wise Distance Ranking</h3><span class="hint">All configured railheads, shortest ↔ longest</span></div><div id="railheadReport" class="scrollx"><div class="empty">Generate the report to see railhead-wise ranking.</div></div></div>
+    </div>
+  </div>
+
+  <div class="report-accordion" id="depotDistilleryAccordion">
+    <button class="report-accordion-head blue" type="button" aria-expanded="false" data-action="toggleReportAccordion" data-target="depotDistilleryAccordion">
+      <span class="report-accordion-icon">🏬</span>
+      <span class="report-accordion-title"><h3>Depot-wise Distillery Distance Report</h3><span class="hint">Select any depot/godown and analyse all distilleries from that depot.</span></span>
+      <span class="report-accordion-chevron">⌄</span>
+    </button>
+    <div class="report-accordion-body">
+      <div class="card depot-report-controls-card">
+        <div class="cardtitle"><div><h3>📍 Depot Report Controls</h3><span class="hint">Choose a depot, direction and generate the distillery ranking.</span></div><button class="btn primary" id="exportDepotDistilleryReport" disabled>▣ Download Excel</button></div>
+        <div class="depot-report-controls-grid">
+          <div class="field"><label>Select Depot / Godown</label><select class="input" id="reportDepot" title="Select Depot / Godown"></select></div>
+          <div class="field"><label>Distance Direction</label><select class="input" id="depotReportDirection" title="Distance Direction"><option value="depot_to_distillery" selected>Depot → Distillery</option><option value="distillery_to_depot">Distillery → Depot</option></select></div>
+        </div>
+        <div class="depot-report-controls-actions"><button class="btn primary" id="runDepotDistilleryReport">▶ Generate Depot-wise Report</button><button class="btn" id="depotReportNearest">Nearest First</button><button class="btn" id="depotReportFarthest">Farthest First</button></div>
+        <div id="depotReportStatus" class="status" style="margin-top:8px">Select a depot and generate the distillery report.</div>
+      </div>
+      <div class="metricgrid" id="depotReportKpis">
+        <div class="metric"><b id="depotReportDistilleryCount">—</b><span>Distilleries</span></div><div class="metric"><b id="depotReportNearestKm">—</b><span>Nearest Distillery</span></div><div class="metric"><b id="depotReportFarthestKm">—</b><span>Farthest Distillery</span></div><div class="metric"><b id="depotReportAverageKm">—</b><span>Average Distance</span></div>
+      </div>
+      <div class="card report-subcard" style="border-top:3px solid #2388ff"><div class="cardtitle"><h3>📋 Distillery-wise Ranking</h3><span class="hint">Nearest ↔ farthest from selected depot</span></div><div id="depotDistilleryReportTable" class="scrollx"><div class="empty">Generate the report to see depot-wise distillery distances.</div></div></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec-settings"><div class="card"><h3>⚙ Mappls Map Connection</h3>
+<p class="hint" style="margin-top:8px"><b>Map:</b> Mappls Web Maps. <b>Routing:</b> Mappls Routing API through the secure Cloudflare Worker. <b>Matrix:</b> Mappls Distance Matrix through the secure Worker. The Mappls Web Map credential is supplied by the secure Worker; it is not entered or stored in this page.</p>
+<div class="toolbar"><button class="btn primary" id="testMappls">Load / Test Mappls Map</button></div>
+<div id="sdkStatus" class="status" style="margin-top:8px">Mappls map not loaded yet.</div><div id="apiDiag" class="hint" style="margin-top:8px"></div></div><div class="card" style="margin-top:10px"><h3>⚙ Data Management</h3><div class="toolbar" style="margin-top:10px"><button class="btn" id="resetData">Reset original 182</button><button class="btn danger" id="clearLocal">Clear local changes</button></div></div></section></div></div>
+<div class="footer"><span>LOGISTICS INTELLIGENCE SYSTEM</span><span><strong>● Secure</strong> &nbsp;•&nbsp; Reliable &nbsp;•&nbsp; Efficient</span></div></main></div><div id="modal" class="modal"><div class="modalbox"><div class="modalhead"><h3 id="modalTitle">Location</h3><button class="close" id="closeModal">×</button></div><div class="grid2"><div class="field"><label>Name</label><input class="input" id="fName"></div><div class="field"><label>Type</label><select class="input" id="fType"><option>Railhead</option><option>Distillery</option><option>Depot</option><option>Plant</option><option>Warehouse</option><option>Other</option></select></div><div class="field"><label>Latitude</label><input class="input" id="fLat" type="number" step="any"></div><div class="field"><label>Longitude</label><input class="input" id="fLng" type="number" step="any"></div></div><div class="toolbar"><button class="btn primary" id="saveLocation">Save</button><button class="btn danger" id="deleteLocation">Delete</button></div></div></div><div id="toast" class="toast"></div>
+<div id="hiddenDirections" style="position:absolute;left:-10000px;top:0;width:320px;height:120px;visibility:hidden;overflow:hidden"></div>
+
+<script src="./app.js?v=20.0.0" defer></script>
+</body></html>
