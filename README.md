@@ -38,3 +38,21 @@ No Cloudflare Worker changes are included in this package. Continue using the ex
 - JavaScript syntax check: passed with Node.js `node --check app.js`.
 - Mappls documentation was checked for the Polyline API; its documented property is `paths` containing `{lat,lng}` points.
 - Live GitHub Pages browser deployment was not performed from this environment.
+
+
+## v21 Final Reports Correction
+
+The Reports scrolling problem was traced to the application layout. The main
+application viewport uses `overflow:hidden`; changing only the table's internal
+overflow was therefore not a reliable fix.
+
+v21 makes the Reports workspace itself the scroll viewport:
+
+- mouse wheel / trackpad scrolling over the report moves the Reports workspace;
+- all generated report rows remain in normal document flow;
+- there is no fixed-height vertical table body;
+- the report header remains sticky while the Reports workspace scrolls;
+- horizontal overflow is handled by the same Reports workspace;
+- a visible scrollbar is provided.
+
+The Cloudflare Worker is not changed by this frontend update.

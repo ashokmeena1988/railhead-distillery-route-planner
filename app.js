@@ -745,6 +745,7 @@ function drawAllMapplsRoutes(routes,selectedIndex=0){
     // from the base map and from overlapping alternatives.
     const casing=new mappls.Polyline({
       map,
+      path:paths,
       paths,
       strokeColor:'#ffffff',
       strokeOpacity:0.96,
@@ -754,6 +755,7 @@ function drawAllMapplsRoutes(routes,selectedIndex=0){
     });
     const layer=new mappls.Polyline({
       map,
+      path:paths,
       paths,
       strokeColor:color,
       strokeOpacity:selected?1:0.72,
@@ -1718,7 +1720,7 @@ for(const t of document.querySelectorAll('.tab'))t.onclick=async()=>{
   document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
   const sec=$('sec-'+t.dataset.tab);
   if(sec)sec.classList.add('active');
-  if(ws){ws.classList.remove('routefocus','mapfocus','fullmode','dashboard-mapview');if(t.dataset.tab==='routeplanner'){ws.classList.add('routefocus');setTimeout(()=>{try{refreshMapLayout();}catch(e){};document.querySelector('.main')?.scrollTo({top:0,behavior:'instant'});},180);}else{ws.classList.add('fullmode');}}
+  if(ws){ws.classList.remove('routefocus','mapfocus','fullmode','dashboard-mapview','reportsmode');if(t.dataset.tab==='routeplanner'){ws.classList.add('routefocus');setTimeout(()=>{try{refreshMapLayout();}catch(e){};document.querySelector('.main')?.scrollTo({top:0,behavior:'instant'});},180);}else{ws.classList.add('fullmode');if(t.dataset.tab==='reports')ws.classList.add('reportsmode');}}
   if(t.dataset.tab==='matrix')renderMatrixPicker();
   if(t.dataset.tab==='reports'){fillDistilleryReportSelect();setTimeout(()=>document.querySelector('.main')?.scrollTo({top:0,behavior:'instant'}),50)}
   document.querySelectorAll('.topnav button').forEach(x=>x.classList.remove('active'));
