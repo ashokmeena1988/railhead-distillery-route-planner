@@ -1,0 +1,18 @@
+LOGISTICS INTELLIGENCE SYSTEM — v24
+
+Replace frontend files:
+- index.html
+- app.js
+- styles.css
+- README.md (optional)
+- SECURITY-HARDENING-README.md (optional)
+
+Do NOT change the Cloudflare Worker.
+
+After GitHub Pages deploy:
+1. Cmd+Shift+R
+2. Calculate a route with alternatives
+3. Confirm all returned route lines are visible together
+4. Click each route; only highlight/details should change
+5. Click location/endpoint pins; compact InfoWindow should open
+6. Reports: each generated table should have its own scrollbar and frozen header
