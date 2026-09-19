@@ -1,0 +1,2126 @@
+
+:root{--g:#006b3c;--g2:#008f5a;--g3:#eaf7f0;--dark:#005a33;--ink:#18352b;--muted:#64756e;--line:#d7e2dc;--bg:#f3f6f4;--white:#fff;--blue:#1769e0;--red:#d84343;--orange:#e58a12;--shadow:0 2px 9px rgba(22,55,42,.07)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:"Noto Sans","Segoe UI",Inter,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}body{overflow:hidden;font-size:14px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}button,input,select{font:inherit}.app{height:100vh;display:flex;flex-direction:column;background:#f7f8f7}.topbar{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px;gap:18px;z-index:5000;flex:none}.brand{width:270px;display:flex;align-items:center;gap:11px}.hamb{font-size:22px;border:0;background:none;color:#38534a;cursor:pointer}.logo{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #d6e8df;color:var(--g);font-weight:900;box-shadow:0 1px 4px #0001}.brand h1{font-size:19px;line-height:1;margin:0;color:#17382c}.brand small{font-size:11px;color:#718079}.globalSearch{height:40px;flex:1;max-width:560px;border:1px solid #cddbd5;border-radius:7px;padding:0 14px 0 42px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24'%3E%3Cpath fill='%23697a73' d='m21 19.6-5.2-5.2a7.6 7.6 0 1 0-1.4 1.4l5.2 5.2zM5.5 10a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0'/%3E%3C/svg%3E") 14px center/18px no-repeat;outline:0}.globalSearch:focus{border-color:#6ab995;box-shadow:0 0 0 3px #008c5012}.topnav{margin-left:auto;display:flex;height:100%;align-items:center;gap:2px}.topnav button{height:46px;border:0;background:transparent;color:#27473b;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:5px}.topnav button:hover,.topnav button.active{background:var(--g3);color:var(--g)}.user{height:48px;border-left:1px solid var(--line);padding-left:15px;display:flex;align-items:center;gap:9px;font-size:12px;font-weight:700}.avatar{width:36px;height:36px;border-radius:50%;background:#0b8c51;color:#fff;display:grid;place-items:center}.user small{display:block;color:#78877f;font-weight:500;margin-top:2px}.sidebar{position:fixed;left:0;top:70px;bottom:0;width:205px;background:linear-gradient(180deg,#006b3c,#005a33);color:#fff;z-index:4000;display:flex;flex-direction:column;box-shadow:2px 0 9px #0002}.tabs{padding:9px 7px}.tab{width:100%;border:0;background:transparent;color:#e3f2ec;text-align:left;padding:11px 13px;border-radius:6px;margin:2px 0;font-size:12px;font-weight:650;cursor:pointer}.tab:hover{background:#ffffff14}.tab.active{background:#20a66b;color:#fff;box-shadow:inset 3px 0 #fff}.tab:before{display:inline-block;width:25px;font-size:14px}.tab[data-tab=routeplanner]:before{content:'⌘'}.tab[data-tab=locations]:before{content:'●'}.tab[data-tab=matrix]:before{content:'▦'}.tab[data-tab=settings]:before{content:'⚙'}.sidebox{margin:10px 13px;padding:12px;border:1px solid #ffffff33;border-radius:7px;background:#005a3380}.sidebox h4{margin:0 0 9px;font-size:12px}.sideitem{display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid #ffffff18}.sideitem:last-child{border:0}.online{color:#8ef2bd}.sidefooter{margin-top:auto;padding:12px 14px;color:#bfe4d3;font-size:9px;line-height:1.5}.main{position:fixed;left:205px;right:0;top:70px;bottom:0;overflow:auto;padding:14px 16px 22px;background:#f4f7f5}.kpis{display:grid;grid-template-columns:repeat(6,minmax(130px,1fr));gap:9px;margin-bottom:10px}.kpi{background:#fff;border:1px solid var(--line);border-radius:7px;padding:10px 12px;min-height:70px;box-shadow:var(--shadow)}.kpi .ico{float:left;width:38px;height:38px;border-radius:7px;display:grid;place-items:center;background:#edf8f2;margin-right:10px;font-size:19px}.kpi:nth-child(2) .ico{background:#fff0f0}.kpi:nth-child(3) .ico{background:#edf4ff}.kpi:nth-child(4) .ico{background:#f0f5f3}.kpi:nth-child(5) .ico{background:#edf5ff}.kpi:nth-child(6) .ico{background:#eaf8f0}.kpi b{display:block;font-size:21px;line-height:1.05;color:#17392d}.kpi span{font-size:10px;color:#6f7f78;font-weight:800;text-transform:uppercase}.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,430px);gap:10px;height:calc(100vh - 190px);min-height:520px;align-items:stretch;min-width:0}.workspace>*{min-width:0}.workspace.fullmode{grid-template-columns:1fr;height:auto;min-height:520px}.workspace.fullmode .mapcard{display:none}.workspace.fullmode .rightcol{width:100%}.workspace.fullmode .section.active{width:100%}.workspace.routefocus{grid-template-columns:minmax(0,1fr) minmax(420px,460px);height:calc(100vh - 190px);min-height:520px}.workspace.routefocus .mapcard{display:block;height:100%;min-height:520px}.workspace.routefocus .rightcol{width:auto;min-width:0;overflow-y:auto;overflow-x:hidden;padding-right:2px}.workspace.routefocus .section.active{width:100%}.workspace.mapfocus{grid-template-columns:1fr;height:calc(100vh - 190px)}.workspace.mapfocus .rightcol{display:none}.workspace.mapfocus .mapcard{height:100%;min-height:520px}.workspace.mapfocus .map{height:calc(100% - 47px)}.mapcard{height:100%;min-height:520px}.map{height:calc(100% - 47px);min-height:430px}.rightcol{min-width:0}.section.active{min-width:0}.routewide{padding:16px;min-width:0}.routewide .routegrid{display:grid;grid-template-columns:minmax(340px,1.05fr) minmax(260px,.75fr);gap:12px};/* Dashboard / Map View: keep the route planner inside the narrow right panel */.workspace:not(.routefocus):not(.fullmode) .rightcol{min-width:0;overflow-y:auto;overflow-x:hidden;padding-right:2px}.workspace:not(.routefocus):not(.fullmode) .routewide{padding:10px}.workspace:not(.routefocus):not(.fullmode) .routewide .routegrid{grid-template-columns:1fr;gap:10px}.workspace:not(.routefocus):not(.fullmode) .routewide .routegrid .routecard:first-child{grid-row:auto}.workspace:not(.routefocus):not(.fullmode) .routewide .routecard{min-width:0;width:100%;padding:13px}.workspace:not(.routefocus):not(.fullmode) .routewide .metricgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace:not(.routefocus):not(.fullmode) .routewide .routepanel{max-height:230px}.workspace:not(.routefocus):not(.fullmode) .routewide .toolbar{flex-wrap:wrap}.workspace:not(.routefocus):not(.fullmode) .routewide .toolbar .btn{flex:1 1 140px}.workspace:not(.routefocus):not(.fullmode) .routewide .table{display:block;overflow-x:auto;white-space:nowrap}.workspace:not(.routefocus):not(.fullmode) .routewide .field{margin-bottom:10px}.routewide .routegrid .routecard:first-child{grid-row:span 2}.routewide .routecard{padding:16px}.routewide .metricgrid{grid-template-columns:repeat(4,1fr)}.routewide .routepanel{max-height:360px}.routewide .routecard h3{font-size:17px}.routewide .routecard,.routewide .routecard *{line-height:1.45}.routewide .field label{font-size:11px}.routewide .input,.routewide select{font-size:14px}.routewide .btn{font-size:13px}.routewide .status,.routewide .hint{font-size:12px}.routewide .metric b{font-size:20px}.routewide .metric span{font-size:10px}.routewide .stop{font-size:12px}.routewide .table{font-size:12px}.routewide .table th{font-size:10px}.routewide .field{margin-bottom:12px}.routewide .input,.routewide select{height:40px}.routewide .btn{padding:10px 13px}.routemapbtn{background:#eef6ff!important;border-color:#b9d5f5!important;color:#1769e0!important} .location-focus-pin{background:#fff;border:3px solid #0b8c51;border-radius:50%;width:22px;height:22px;box-shadow:0 2px 10px #0005;position:relative}.location-focus-pin:after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;background:#0b8c51;border-radius:50%;transform:translate(-50%,-50%)}.route-endpoint-pin{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;border:3px solid #fff;box-shadow:0 3px 12px #0006}.route-start{background:#1677ff}.route-end{background:#e53950}.route-via{background:#f59f00}.route-legend-card{font-size:11px}@media(max-width:1250px){.workspace{grid-template-columns:minmax(0,1fr) minmax(360px,400px)}.routewide .routegrid{grid-template-columns:minmax(300px,1fr) minmax(240px,.8fr)}}@media(max-width:950px){.workspace,.workspace.mapfocus,.workspace.routefocus{height:auto;min-height:0;grid-template-columns:1fr}.workspace:not(.routefocus):not(.fullmode) .rightcol{overflow:visible;padding-right:0}.workspace.routefocus .routewide .routegrid,.routewide .routegrid{grid-template-columns:1fr}.mapcard{height:600px;min-height:600px}.map{height:553px;min-height:553px}.workspace.mapfocus .mapcard{min-height:600px}.workspace.mapfocus .map{height:553px}}.mapcard,.card{background:#fff;border:1px solid var(--line);border-radius:7px;box-shadow:var(--shadow)}.mapcard{overflow:hidden;position:relative;min-height:480px}.maphead{height:47px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;gap:7px}.maphead h3{font-size:14px;margin:0 8px 0 2px}.maptabs{display:flex;gap:3px}.maptabs button{border:1px solid var(--line);background:#fff;border-radius:5px;padding:7px 10px;font-size:10px;font-weight:700;color:#345247;cursor:pointer}.maptabs button:first-child{background:#e8f6ef;color:var(--g);border-color:#b8dfcc}.mapactions{margin-left:auto;display:flex;gap:5px}.mapactions .btn{padding:7px 9px}.map{height:calc(100% - 47px);width:100%;background:#e3ece8}.maptop{position:absolute;z-index:1000;top:57px;left:10px;right:10px;display:flex;justify-content:space-between;pointer-events:none}.searchbar,.maptools{pointer-events:auto;background:#fff;border:1px solid #d2ded9;box-shadow:var(--shadow);border-radius:6px;padding:5px}.searchbar{display:flex;gap:5px;width:350px}.searchbar input{border:0;outline:0;flex:1;padding:3px 7px;font-size:11px}.maptools{display:flex;gap:4px}.mapbottom{position:absolute;z-index:1000;left:10px;right:10px;bottom:10px;display:flex;justify-content:space-between;align-items:end;pointer-events:none}.summary{pointer-events:auto;background:#fff;border:1px solid #d2ded9;border-radius:7px;padding:9px 12px;box-shadow:var(--shadow);display:none}.summary.show{display:block}.summaryTop{display:flex;gap:12px;align-items:center}.bigkm{font-size:22px;font-weight:900;color:var(--g)}.time{font-size:11px;color:#1769e0;font-weight:800}.summaryDetails{font-size:10px;color:#718079;margin-top:3px}.legend{pointer-events:auto;background:#fff;border:1px solid #d2ded9;border-radius:6px;padding:7px 9px;font-size:10px;box-shadow:var(--shadow)}.legend span{margin-right:9px}.rightcol{display:flex;flex-direction:column;gap:10px}.section{display:none}.section.active{display:block}.routecard{background:#fff;border:1px solid var(--line);border-radius:7px;box-shadow:var(--shadow);padding:11px}.cardtitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.cardtitle h3{margin:0;font-size:14px}.cardtitle span{font-size:10px;color:#718079}.field{margin-bottom:8px}.field label{display:block;font-size:9px;font-weight:800;color:#64766e;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}.input,select{width:100%;height:35px;background:#fff;border:1px solid #cadad3;border-radius:6px;color:#1c352b;padding:0 9px;outline:0;font-size:11px}.input:focus,select:focus{border-color:#2ca66d;box-shadow:0 0 0 3px #008c5010}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toolbar{display:flex;gap:6px;flex-wrap:wrap}.btn{border:1px solid #cbdad3;background:#fff;color:#28473b;border-radius:6px;padding:8px 10px;cursor:pointer;font-size:12px;font-weight:700}.btn:hover{box-shadow:0 2px 6px #0001}.btn.primary,.btn.green{background:#078b4e;color:#fff;border-color:#078b4e}.btn.danger{background:#fff0f0;color:#b52d2d;border-color:#efc6c6}.status{padding:7px 8px;border-radius:5px;background:#f5f8f6;border:1px solid #dce7e2;color:#687a72;font-size:10px}.status.ok{background:#eefaf4;border-color:#bde4d0;color:#087644}.status.err{background:#fff4f4;border-color:#efc3c3;color:#b42e2e}.metricgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.metric{padding:8px;border:1px solid #e0e9e5;border-radius:6px;background:#fbfdfc;text-align:left}.metric b{display:block;font-size:17px;color:#0b7c4b}.metric span{font-size:8px;color:#71817b;text-transform:uppercase;font-weight:800}.route-list{display:flex;flex-direction:column;gap:5px}.stop{display:flex;align-items:center;gap:7px;padding:7px;border:1px solid #e0e9e5;border-radius:5px;background:#fbfdfc;font-size:10px}.dot{width:9px;height:9px;border-radius:50%;flex:none}.small{padding:5px 7px;font-size:9px}.routepanel{max-height:190px;overflow:auto}.empty{color:#899690;padding:10px;text-align:center;font-size:10px}.lower{display:none}.card{padding:11px}.card h3{font-size:13px;margin:0}.recent table{width:100%}.table{width:100%;border-collapse:collapse;font-size:10px}.table th,.table td{padding:7px 5px;border-bottom:1px solid #e6ece9;text-align:left}.table th{font-size:8px;text-transform:uppercase;color:#718079}.badge{display:inline-block;padding:3px 6px;border-radius:99px;background:#eaf7f0;color:#087644;font-size:8px;font-weight:800}.statsrow{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #edf1ef}.statsrow:last-child{border:0}.statsrow b{font-size:14px}.quickgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.quick{border:1px solid #d8e8e0;background:#f8fbf9;border-radius:6px;padding:9px;text-align:center;font-size:9px;font-weight:800;color:#1769e0;cursor:pointer}.quick:hover{background:#edf8f2}.topdatacard{margin-bottom:10px}.topdatacard .cardtitle{margin-bottom:6px}.toprefresh,.topdata{padding:6px 9px;font-size:11px}.user{gap:6px}.footer{display:flex;justify-content:space-between;padding:12px 2px 0;color:#77867f;font-size:9px}.footer strong{color:#14754a}.pin{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;border:3px solid #fff;box-shadow:0 3px 10px #0004;font-weight:900;font-size:9px}.modal{position:fixed;inset:0;background:#0006;display:none;place-items:center;z-index:6000}.modal.show{display:grid}.modalbox{width:min(560px,calc(100% - 30px));background:#fff;border-radius:9px;padding:18px;box-shadow:0 25px 70px #0005}.modalhead{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:none;font-size:24px}.hint{font-size:10px;color:var(--muted);line-height:1.45}.scrollx{overflow:auto}.matrix{border-collapse:separate;border-spacing:0;font-size:9px;min-width:max-content;background:#fff}.matrix td,.matrix th{padding:5px 4px;border-right:1px solid #dce7e2;border-bottom:1px solid #dce7e2;white-space:normal;vertical-align:middle}.matrix thead th{position:sticky;top:0;z-index:5;background:#edf6f1;font-weight:800;text-align:center;min-width:78px;width:78px;max-width:78px;height:62px}.matrix thead th:first-child{left:0;z-index:7;min-width:150px;width:150px;max-width:150px;text-align:left;background:#dfeee7}.matrix tbody th{position:sticky;left:0;z-index:4;background:#f7faf8;font-weight:800;text-align:left;min-width:150px;width:150px;max-width:150px}.matrix tbody tr:nth-child(even) td,.matrix tbody tr:nth-child(even) th{background:#fbfdfc}.matrix td{text-align:center;min-width:78px;width:78px;max-width:78px}.matrix td.diag{background:#e8f6ef!important;color:#087644}.matrix .mh{display:block;font-size:9px;line-height:1.15;overflow-wrap:anywhere}.matrix .sub{display:block;font-size:8px;color:#75847e;margin-top:2px}.matrix .dist{font-size:9px;font-weight:850;color:#17382c;white-space:nowrap}.matrix .dur{font-size:8px;color:#64756e;white-space:nowrap;margin-top:2px}
+/* Reports accordion */
+.report-accordion{border:1px solid var(--line);border-radius:8px;background:#fff;box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px}
+.report-accordion-head{min-height:58px;display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;background:linear-gradient(180deg,#fff,#f8fbf9);border:0;width:100%;text-align:left;color:var(--ink)}
+.report-accordion-head:hover{background:#f2f8f5}
+.report-accordion-icon{width:32px;height:32px;border-radius:7px;display:grid;place-items:center;background:#eaf7f0;color:var(--g);font-size:16px;flex:none}
+.report-accordion-head.blue .report-accordion-icon{background:#edf4ff;color:#1769e0}
+.report-accordion-title{flex:1;min-width:0}
+.report-accordion-title h3{margin:0;font-size:14px;font-weight:850}
+.report-accordion-title .hint{display:block;margin-top:3px}
+.report-accordion-chevron{width:28px;height:28px;border:1px solid #d5e2dc;border-radius:6px;display:grid;place-items:center;color:#527066;font-size:14px;transition:transform .2s ease,background .2s ease;flex:none}
+.report-accordion.open .report-accordion-chevron{transform:rotate(180deg);background:#eaf7f0;color:var(--g)}
+.report-accordion-body{display:none;padding:0 12px 12px;border-top:1px solid #e3ebe7}
+.report-accordion.open .report-accordion-body{display:block}
+.report-accordion-body>.card{box-shadow:none;border:0;border-radius:0;padding:10px 0 0}
+.report-accordion-body>.card:first-child{padding-top:10px}
+.report-accordion-body>.metricgrid{margin-top:10px!important}
+.report-accordion-body>.report-subcard{margin-top:10px}
+.report-accordion-body .cardtitle{padding:0 2px}
+@media(max-width:700px){.report-accordion-head{min-height:54px;padding:9px}.report-accordion-title h3{font-size:13px}.report-accordion-title .hint{font-size:9px}.report-accordion-body{padding:0 8px 10px}}
+.report-direction-banner{margin:8px 0;padding:8px 10px;border:1px solid #cfe1d8;border-radius:6px;background:#f4faf7;color:#315248;font-size:10px}.report-direction-banner span{color:#718079;margin-left:5px}.report-table{width:100%;border-collapse:collapse;font-size:11px;min-width:760px}
+.report-table th,.report-table td{padding:9px 8px;border-bottom:1px solid #e5ece8;text-align:left;vertical-align:middle}
+.report-table th{background:#edf7f2;color:#35564a;font-size:9px;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0;z-index:2}
+.report-table tr:nth-child(even) td{background:#fbfdfc}
+.report-table .rank{width:55px;font-weight:900;color:#087644}
+.report-table .km{font-size:13px;font-weight:900;color:#17392d;white-space:nowrap}
+.report-table .time{font-size:10px;color:#5f7169;white-space:nowrap}
+.report-table .route-link{cursor:pointer;color:#087644;text-decoration:underline;text-decoration-style:dotted}
+.report-summary{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+.report-pill{padding:5px 8px;border:1px solid #d7e6df;border-radius:99px;background:#f7fbf9;font-size:10px;color:#426057}
+.report-table .code{font-size:9px;color:#718079}
+.matrix-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:12px;align-items:start}.matrix-pick{height:calc(100vh - 255px);min-height:360px;max-height:680px;overflow:auto;border:1px solid #dce7e2;border-radius:7px;padding:7px;background:#fbfdfc}.matrix-pick label{display:flex;align-items:flex-start;gap:7px;padding:7px 6px;border-bottom:1px solid #eef2f0;font-size:10px;text-transform:none;letter-spacing:0;font-weight:600;margin:0}.matrix-pick label:last-child{border-bottom:0}.matrix-pick input{width:15px;height:15px;margin-top:1px}.matrix-toolbar{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}.matrix-toolbar .btn{font-size:10px;padding:7px 9px}.matrix-result{height:calc(100vh - 255px);min-height:360px;max-height:680px;overflow:auto;border:1px solid #dce7e2;border-radius:7px;padding:0;background:#fff;position:relative}.matrix-result .empty{padding:30px}.matrix-head-note{padding:8px 10px;border-bottom:1px solid #dce7e2;background:#f7faf8;font-size:10px;color:#5f7169;position:sticky;top:0;z-index:8}.matrix-section-title{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;background:#f7faf8;border-bottom:1px solid #dce7e2;font-size:11px;color:#23453a}.matrix-section-title span{font-size:9px;color:#718079}.matrix-divider{height:12px;background:#f0f4f2;border-top:1px solid #dce7e2;border-bottom:1px solid #dce7e2}.cross-matrix thead th{height:68px}.cross-matrix tbody th{background:#f7faf8}.cross-matrix td{background:#fff}.cross-matrix tbody tr:nth-child(even) td,.cross-matrix tbody tr:nth-child(even) th{background:#fbfdfc}.matrix-section-title+ .scrollx{padding-bottom:2px}.matrix-result>.matrix-head-note{position:sticky;top:0;z-index:9}.matrix-result .matrix-section-title{position:sticky;top:35px;z-index:8}.matrix-result .scrollx{overflow:auto}.matrix-result .cross-matrix{margin:0}.matrix-result .cross-matrix thead th{position:sticky;top:0;z-index:5}.matrix-result .cross-matrix thead th:first-child{left:0;z-index:7}.matrix-result .cross-matrix tbody th{position:sticky;left:0;z-index:4}
+/* Professional matrix readability */
+.matrix-result{font-size:13px}
+.matrix-result .matrix-head-note{font-size:12px;font-weight:600;padding:10px 12px}
+.matrix-section-title{font-size:13px;padding:10px 12px}
+.matrix-section-title span{font-size:11px}
+.matrix{font-size:11px}
+.matrix td,.matrix th{padding:7px 6px}
+.matrix thead th{min-width:112px;width:112px;max-width:112px;height:78px}
+.matrix thead th:first-child,.matrix tbody th{min-width:190px;width:190px;max-width:190px}
+.matrix tbody th{font-size:11px;line-height:1.25}
+.matrix .mh{font-size:11px;line-height:1.25}
+.matrix .sub{font-size:9px;margin-top:3px}
+.matrix td{min-width:112px;width:112px;max-width:112px;cursor:pointer;transition:background .12s,box-shadow .12s}
+.matrix td:hover{background:#eaf7f0!important;box-shadow:inset 0 0 0 2px #8ccfb0}
+.matrix .dist{font-size:12px;font-weight:900;color:#17382c}
+.matrix .dur{font-size:10px;color:#5e7068;margin-top:3px}
+.matrix-cell-link{display:block;color:inherit;text-decoration:none}
+.matrix-cell-link:after{content:'  ↗';font-size:9px;color:#168653;font-weight:800}
+.matrix-exportbar{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff;border-bottom:1px solid #dce7e2;position:sticky;top:35px;z-index:10}
+.matrix-exportbar .btn{font-size:11px;padding:7px 10px}
+.matrix-exportbar .matrix-export-info{font-size:10px;color:#718079;margin-left:auto}
+..toast{position:fixed;right:18px;top:82px;z-index:7000;background:#fff;border:1px solid #cbdad3;color:#1d3a2d;border-radius:7px;padding:10px 14px;box-shadow:var(--shadow);display:none;max-width:380px}.toast.show{display:block}.toast.err{border-color:#efc3c3;color:#a92d2d}.mobilebar{display:inline-block}
+
+/* Collapsible desktop sidebar */
+.sidebar{transition:width .22s ease}
+.main{transition:left .22s ease}
+.app.sidebar-collapsed .sidebar{width:68px}
+.app.sidebar-collapsed .main{left:68px}
+.app.sidebar-collapsed .tabs{padding:9px 7px}
+.app.sidebar-collapsed .tab{font-size:0;text-align:center;padding:11px 8px}
+.app.sidebar-collapsed .tab:before{width:auto;font-size:17px}
+.app.sidebar-collapsed .sidebox,.app.sidebar-collapsed .sidefooter{display:none}
+.app.sidebar-collapsed .brand{width:68px}
+.app.sidebar-collapsed .brand h1,.app.sidebar-collapsed .brand small{display:none}
+.app.sidebar-collapsed .globalSearch{max-width:620px}
+#desktopMenuToggle{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid #cbdad3;border-radius:6px;background:#fff;color:#285044;cursor:pointer;font-size:18px;font-weight:800;flex:none}
+#desktopMenuToggle:hover{background:#edf8f2}
+@media(max-width:950px){.mobilebar{display:inline-block}.app.sidebar-collapsed .sidebar{width:205px}.app.sidebar-collapsed .main{left:0}.app.sidebar-collapsed .tab{font-size:12px;text-align:left;padding:11px 13px}.app.sidebar-collapsed .tab:before{width:25px;font-size:14px}.app.sidebar-collapsed .sidebox,.app.sidebar-collapsed .sidefooter{display:block}.app.sidebar-collapsed .brand{width:auto}.app.sidebar-collapsed .brand h1,.app.sidebar-collapsed .brand small{display:block}}
+@media(max-width:1250px){.workspace{grid-template-columns:minmax(480px,1fr) 390px}.kpis{grid-template-columns:repeat(3,1fr)}.topnav button{padding:4px 7px}.brand{width:235px}}
+@media(max-width:950px){body{overflow:auto}.topbar{height:62px}.brand{width:auto}.brand h1{font-size:15px}.brand small{display:none}.globalSearch{max-width:none}.topnav{display:none}.sidebar{top:62px;transform:translateX(-105%);transition:.2s}.sidebar.open{transform:translateX(0)}.mobilebar{display:inline-block}.main{left:0;top:62px;position:absolute;padding:9px}.kpis{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:1fr}.rightcol{order:2}.mapcard{min-height:430px}.lower{grid-template-columns:1fr}.footer{padding-bottom:20px}}
+
+/* v24 responsive layout fixes */
+.main{overflow:hidden;padding:10px 12px 12px}
+.workspace{height:calc(100vh - 82px);min-height:0;max-height:calc(100vh - 82px);overflow:hidden}
+.workspace.fullmode{height:calc(100vh - 82px);min-height:0;max-height:none;overflow:auto}
+.workspace.routefocus{height:calc(100vh - 82px);min-height:0;max-height:none;overflow:auto}
+.mapcard{min-height:0;height:100%}
+.map{min-height:0;height:calc(100% - 47px)}
+.rightcol{min-height:0;overflow:hidden}
+.routewide{height:100%;overflow:auto;padding:10px}
+.routewide .routegrid{min-height:0}
+.routewide .routepanel{max-height:320px;overflow:auto}
+@media(max-width:950px){
+  .main{overflow:auto}
+  .workspace,.workspace.routefocus,.workspace.fullmode{height:auto;max-height:none;min-height:0;overflow:visible}
+  .mapcard{height:62vh;min-height:460px}
+  .map{height:calc(62vh - 47px);min-height:413px}
+  .rightcol{overflow:visible}
+  .routewide{height:auto;overflow:visible}
+}
+
+/* v25 layout/readability fixes */
+.routewide .routecard{min-width:0;overflow:hidden}
+.routewide .routecard h3{font-size:18px!important}
+.routewide .routecard .cardtitle span{font-size:12px}
+.routewide .field label{font-size:12px!important}
+.routewide .input,.routewide select{font-size:15px!important;height:42px}
+.routewide .btn{font-size:13px!important}
+.routewide .status,.routewide .hint{font-size:12px!important}
+.routewide .metric b{font-size:21px!important}
+.routewide .metric span{font-size:11px!important}
+.routewide .stop{font-size:13px!important}
+.routewide .table{font-size:13px!important}
+.routewide .table th{font-size:11px!important}
+.summary-routes-title{margin-top:14px;padding:8px 10px;background:#f4f8f6;border:1px solid #dbe8e2;border-bottom:0;border-radius:6px 6px 0 0;font-size:12px;font-weight:900;color:#315248;text-transform:uppercase;letter-spacing:.04em}
+.summary-routes{max-height:270px;overflow:auto;border:1px solid #dbe8e2;border-radius:0 0 6px 6px;background:#fff}
+.summary-routes .table{margin:0;min-width:680px}
+#sec-locations,#sec-reports{padding-bottom:20px;min-width:0}
+#sec-locations>.card,#sec-reports>.card{min-width:0}
+#sec-locations .scrollx,#sec-reports .scrollx{max-height:calc(100vh - 285px);min-height:180px;overflow:auto}
+#sec-locations .table{min-width:850px}
+#sec-locations .table thead th{position:sticky;top:0;z-index:3;background:#edf7f2}
+#sec-reports .report-table{min-width:760px}
+#sec-reports .card{overflow:visible}
+#sec-reports .scrollx{border:1px solid #e1e9e5;border-radius:6px}
+.main{overflow:auto;scrollbar-gutter:stable}
+@media(max-width:950px){
+  .routewide .routegrid{grid-template-columns:1fr!important}
+  #sec-locations .scrollx,#sec-reports .scrollx{max-height:calc(100vh - 260px)}
+  .summary-routes{max-height:240px}
+}
+
+/* v26 route alternatives + map direction panel controls */
+.route-alt-count{float:right;font-size:10px;font-weight:800;color:#1769e0;text-transform:none;letter-spacing:0}
+.route-alternatives{display:grid;grid-template-columns:1fr;gap:6px;margin:0 0 12px}
+.route-alt{border:1px solid #dbe8e2;border-radius:6px;background:#fff;padding:9px 10px;display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center}
+.route-alt.active{border-color:#79bfa0;background:#f3fbf7;box-shadow:inset 3px 0 #078b4e}
+.route-alt .route-num{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#eef6ff;color:#1769e0;font-weight:900;font-size:11px}
+.route-alt .route-name{font-size:12px;font-weight:800;color:#23453a}
+.route-alt .route-meta{font-size:10px;color:#718079;margin-top:2px}
+.route-alt .route-distance{font-size:14px;font-weight:900;color:#078b4e;white-space:nowrap}
+.route-alt .route-duration{font-size:10px;color:#1769e0;font-weight:800;text-align:right;margin-top:2px}
+.mapcard.route-details-collapsed .map-direction-overlay{display:none!important}
+.map-direction-toggle{position:absolute;z-index:1600;left:10px;top:105px;display:none}
+.map-direction-toggle.show{display:block}
+@media(max-width:950px){.route-alt{grid-template-columns:28px 1fr}.route-alt .route-distance,.route-alt .route-duration{grid-column:2;text-align:left}}
+
+/* v26: independent Route Planner scrolling; never scroll behind the map */
+html,body,.app{overflow:hidden!important}
+.main{overflow:hidden!important;min-width:0}
+.workspace{min-width:0;overflow:hidden}
+.mapcard,.rightcol{min-width:0;min-height:0}
+.rightcol{overflow:hidden!important}
+.routewide{overflow-y:auto!important;overflow-x:hidden!important;height:100%!important;max-height:100%!important;overscroll-behavior:contain;padding-right:8px}
+.routewide .routegrid{min-width:0;width:100%}
+.routewide .routecard{min-width:0;max-width:100%}
+.routewide .summary-routes,.routewide .route-alternatives,.routewide .routepanel{overflow:auto;max-width:100%}
+@media(max-width:950px){
+  html,body,.app{overflow:auto!important}
+  .main{overflow:auto!important}
+  .workspace{overflow:visible!important}
+  .rightcol{overflow:visible!important}
+  .routewide{overflow:visible!important;height:auto!important;max-height:none!important}
+}
+
+/* v32 UX enhancements */
+:root{--top-h:70px}
+.app.dark-mode{--ink:#e7f2ed;--muted:#a6b8b0;--line:#31463e;--bg:#101815;--white:#17221e;--g3:#193d2e;--shadow:0 2px 12px rgba(0,0,0,.28)}
+.app.dark-mode .topbar,.app.dark-mode .main,.app.dark-mode .card,.app.dark-mode .mapcard,.app.dark-mode .routecard,.app.dark-mode .metric,.app.dark-mode .modalbox,.app.dark-mode .summary,.app.dark-mode .legend,.app.dark-mode .searchbar,.app.dark-mode .maptools,.app.dark-mode .globalSearch,.app.dark-mode .input,.app.dark-mode select,.app.dark-mode .btn{background:#17221e;color:var(--ink);border-color:#31463e}
+.app.dark-mode .main{background:#101815}.app.dark-mode .topbar{border-color:#31463e}.app.dark-mode .brand h1,.app.dark-mode .kpi b,.app.dark-mode .matrix .dist{color:#e7f2ed}.app.dark-mode .globalSearch{background-color:#17221e}.app.dark-mode .map{background:#1a2923}.app.dark-mode .table th,.app.dark-mode .table td,.app.dark-mode .statsrow{border-color:#2c4038}.app.dark-mode .table th,.app.dark-mode .hint,.app.dark-mode .cardtitle span{color:#9bb0a7}.app.dark-mode .metric{background:#14201c}.app.dark-mode .maptabs button{background:#17221e;color:#c8d9d2;border-color:#31463e}.app.dark-mode .maptabs button:first-child{background:#193d2e;color:#8de0b5}.app.dark-mode .route-alternatives,.app.dark-mode .routepanel,.app.dark-mode .route-list .stop{background:#14201c!important;border-color:#31463e!important}
+.top-tools{display:flex;align-items:center;gap:5px;margin-left:auto}.top-tool{height:36px;min-width:36px;border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:7px;cursor:pointer;font-size:12px;font-weight:800}.top-tool:hover{box-shadow:0 2px 8px #0002}.lang-label{font-size:11px;font-weight:900;padding:0 7px}.alert-btn{position:relative}.alert-badge{position:absolute;right:-3px;top:-4px;min-width:16px;height:16px;padding:0 4px;border-radius:99px;background:#d84343;color:#fff;font-size:9px;display:grid;place-items:center;border:2px solid var(--white)}
+.alert-pop{position:fixed;right:18px;top:64px;width:min(390px,calc(100vw - 30px));background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 35px #0003;padding:12px;z-index:7000;display:none}.alert-pop.show{display:block}.alert-pop h3{margin:0 0 8px;font-size:13px}.alert-item{padding:8px;border:1px solid #ecd1d1;background:#fff6f6;border-radius:7px;margin:5px 0;font-size:11px}.app.dark-mode .alert-item{background:#2a1b1b;border-color:#5b3535}.alert-empty{padding:10px;background:#f3faf6;border-radius:7px;font-size:11px;color:#28724f}.app.dark-mode .alert-empty{background:#193328;color:#a8dfc2}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(130px,1fr));gap:9px;margin-bottom:10px}.kpi{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-height:70px;box-shadow:var(--shadow)}.kpi .ico{transition:transform .2s ease}.kpi:hover .ico{transform:translateY(-2px) scale(1.04)}.kpi b.counting{animation:kpiPop .45s ease}@keyframes kpiPop{0%{opacity:.3;transform:translateY(4px)}100%{opacity:1;transform:none}}
+.report-print-btn{margin-left:5px}.history-list{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow:auto}.history-item{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;border:1px solid var(--line);background:var(--white);border-radius:7px;padding:8px}.history-route{font-size:11px;font-weight:800}.history-meta{font-size:9px;color:var(--muted);margin-top:2px}.history-actions{display:flex;gap:4px}.history-actions .btn{padding:5px 7px;font-size:10px}.history-empty{font-size:10px;color:var(--muted);text-align:center;padding:10px}
+@media(max-width:1250px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:950px){.kpis{grid-template-columns:repeat(2,1fr)}.top-tools{gap:3px}.top-tool{min-width:34px}.lang-label{font-size:10px;padding:0 5px}}
+@media print{
+  body{overflow:visible!important;background:#fff!important}.topbar,.sidebar,.mapcard,.top-tools,.globalSearch,.footer,.report-print-btn,.toolbar button:not(.keep-print),#toast{display:none!important}.main{position:static!important;left:0!important;top:0!important;right:auto!important;bottom:auto!important;padding:0!important;overflow:visible!important;background:#fff!important}.workspace,.workspace.fullmode,.workspace.routefocus{display:block!important;height:auto!important;min-height:0!important}.rightcol{display:block!important}.section{display:none!important}.section.active{display:block!important}.report-accordion{display:block!important}.report-accordion-body{display:block!important}.report-accordion-head{border:1px solid #bbb!important}.card,.report-subcard{box-shadow:none!important;break-inside:avoid}.print-header{display:block!important}.matrix{font-size:8px!important}
+}
+.print-header{display:none;text-align:center;margin-bottom:14px}.print-header h1{margin:0;font-size:20px}.print-header p{margin:4px 0;font-size:10px;color:#555}
+<style id="mappls-v38-layout-fix">
+#map{position:relative!important;width:100%!important;height:100%!important;min-height:430px!important;overflow:hidden!important}
+#map > div,#map canvas,#map iframe{max-width:none!important}
+#map > div{width:100%!important;height:100%!important}
+.mapcard{min-width:0!important}
+
+
+
+:root{
+  --premium-green:#0b8f62; --premium-green-2:#19b77b; --premium-ink:#10231d;
+  --glass:rgba(255,255,255,.76); --glass-strong:rgba(255,255,255,.91);
+  --glass-border:rgba(255,255,255,.72); --glass-shadow:0 18px 55px rgba(15,58,45,.13);
+  --premium-radius:18px;
+}
+body{background:radial-gradient(circle at 8% 0%,rgba(39,190,132,.14),transparent 28%),radial-gradient(circle at 95% 8%,rgba(24,140,255,.08),transparent 25%),linear-gradient(135deg,#f5fbf8 0%,#eef6f2 45%,#f8fbfa 100%)!important;color:var(--premium-ink)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(120deg,rgba(255,255,255,.38),transparent 35%,rgba(255,255,255,.18));}
+.topbar,.header,.navbar{background:linear-gradient(135deg,rgba(8,101,69,.97),rgba(11,143,98,.94) 55%,rgba(20,169,116,.93))!important;box-shadow:0 10px 35px rgba(5,72,49,.22),inset 0 1px 0 rgba(255,255,255,.28)!important;border-bottom:1px solid rgba(255,255,255,.25)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.sidebar{background:linear-gradient(180deg,rgba(8,67,48,.98),rgba(7,91,64,.96))!important;box-shadow:12px 0 40px rgba(3,49,35,.16)!important;border-right:1px solid rgba(255,255,255,.12)!important}
+.card,.panel,.kpi-card,.stat-card,.report-section,.route-card,.location-card,.table-card,.modal-content,.control-panel,.settings-card,.filter-card{background:var(--glass)!important;border:1px solid var(--glass-border)!important;border-radius:var(--premium-radius)!important;box-shadow:var(--glass-shadow),inset 0 1px 0 rgba(255,255,255,.78)!important;backdrop-filter:blur(18px) saturate(135%);-webkit-backdrop-filter:blur(18px);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.card:hover,.kpi-card:hover,.stat-card:hover,.route-card:hover,.location-card:hover{transform:translateY(-2px);box-shadow:0 22px 60px rgba(15,58,45,.17),inset 0 1px 0 rgba(255,255,255,.9)!important}
+.kpi-card{position:relative;overflow:hidden}
+.kpi-card:before{content:"";position:absolute;width:130px;height:130px;right:-55px;top:-65px;border-radius:50%;background:radial-gradient(circle,rgba(31,190,132,.25),transparent 68%);pointer-events:none}
+.kpi-card .icon,.kpi-icon{filter:drop-shadow(0 5px 9px rgba(8,120,79,.18));}
+button,.btn,.tab-btn,.nav-btn{border-radius:12px!important;border:1px solid rgba(255,255,255,.32)!important;box-shadow:0 7px 18px rgba(8,92,63,.12),inset 0 1px 0 rgba(255,255,255,.38);transition:all .18s ease!important}
+button:hover,.btn:hover,.tab-btn:hover,.nav-btn:hover{transform:translateY(-1px);box-shadow:0 11px 25px rgba(8,92,63,.18),inset 0 1px 0 rgba(255,255,255,.48)!important}
+input,select,textarea{border:1px solid rgba(14,116,80,.18)!important;border-radius:11px!important;background:rgba(255,255,255,.76)!important;box-shadow:inset 0 1px 3px rgba(14,80,59,.05),0 3px 12px rgba(10,80,56,.04)!important;transition:border-color .18s,box-shadow .18s,background .18s}
+input:focus,select:focus,textarea:focus{outline:none!important;border-color:rgba(15,151,103,.62)!important;background:#fff!important;box-shadow:0 0 0 4px rgba(18,170,115,.12),0 8px 22px rgba(12,107,73,.08)!important}
+table{border-collapse:separate!important;border-spacing:0!important;overflow:hidden;border-radius:14px}
+thead th{background:linear-gradient(135deg,rgba(9,110,76,.98),rgba(15,150,103,.94))!important;color:#fff!important;border-bottom:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+tbody tr{transition:background .15s,transform .15s} tbody tr:hover{background:rgba(21,169,113,.07)!important}
+.badge,.status-badge,.pill{border-radius:999px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.06)}
+.route-card{background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(239,249,245,.7))!important}
+.route-card.active,.route-card.selected{border-color:rgba(18,163,110,.65)!important;box-shadow:0 18px 45px rgba(10,132,88,.18),inset 0 0 0 1px rgba(20,180,124,.16)!important}
+.report-section{overflow:hidden}
+.report-section h3,.report-section .section-title{letter-spacing:.1px}
+.modal-backdrop,.modal{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:rgba(10,90,62,.05);border-radius:20px}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#75cba9,#139466);border-radius:20px;border:2px solid transparent;background-clip:padding-box}::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#55bd94,#08784f);background-clip:padding-box}
+@keyframes premiumPulse{0%,100%{box-shadow:0 0 0 0 rgba(21,169,113,.0)}50%{box-shadow:0 0 0 7px rgba(21,169,113,.08)}}
+.alert-badge{animation:premiumPulse 2.8s ease-in-out infinite}
+@media(max-width:900px){.card,.panel,.kpi-card,.report-section,.route-card{border-radius:15px!important}.topbar{box-shadow:0 7px 25px rgba(5,72,49,.18)!important}}
+body.dark-mode{background:radial-gradient(circle at 8% 0%,rgba(20,155,105,.16),transparent 28%),linear-gradient(135deg,#071914,#0b211a 55%,#081510)!important;color:#eaf7f1}
+body.dark-mode .card,body.dark-mode .panel,body.dark-mode .kpi-card,body.dark-mode .stat-card,body.dark-mode .report-section,body.dark-mode .route-card,body.dark-mode .location-card,body.dark-mode .table-card,body.dark-mode .control-panel,body.dark-mode .settings-card,body.dark-mode .filter-card{background:rgba(12,31,25,.78)!important;border-color:rgba(151,224,197,.14)!important;box-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06)!important}
+body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:rgba(5,21,16,.76)!important;color:#e8f6f0!important;border-color:rgba(127,207,178,.2)!important}
+body.dark-mode input:focus,body.dark-mode select:focus,body.dark-mode textarea:focus{background:rgba(8,27,21,.94)!important}
+
+/* v27 route/location interaction fixes */
+.route-alt-card{border:1px solid #dbe8e2!important;border-radius:7px;background:#fff;transition:border-color .15s,box-shadow .15s,background .15s}
+.route-alt-card:hover{border-color:#8ac7aa!important;background:#f8fcfa}
+.route-alt-card.active{border-color:#168653!important;background:#f3fbf7!important;box-shadow:inset 4px 0 #078b4e,0 1px 4px #0001}
+.selected-route-note{margin-bottom:8px!important;padding:8px 10px!important;border-radius:7px!important;border:1px solid #cfe5d9!important;background:#f4fbf7!important}
+.map-route-details-overlay{position:absolute;z-index:1550;right:12px;bottom:52px;width:min(360px,calc(100% - 24px));max-height:min(430px,calc(100% - 125px));overflow:auto;background:rgba(255,255,255,.97);border:1px solid #c9dbd3;border-radius:9px;box-shadow:0 5px 22px #0003;padding:11px;display:none;pointer-events:auto;backdrop-filter:blur(5px)}
+.map-route-details-overlay.show{display:block}
+.map-route-overlay-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px solid #e2ebe7;padding-bottom:8px}
+.map-route-overlay-head b{display:block;font-size:14px;color:#17382c}
+.map-route-overlay-head span{display:block;font-size:10px;color:#718079;margin-top:2px}
+.map-route-overlay-close{width:27px;height:27px;border:1px solid #d4e0db;border-radius:6px;background:#fff;color:#53665f;font-size:18px;line-height:1;cursor:pointer}
+.map-route-overlay-close:hover{background:#f2f7f4}
+.map-route-overlay-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:9px 0}
+.map-route-overlay-metrics>div{border:1px solid #e0e9e5;border-radius:6px;padding:7px;background:#fbfdfc;min-width:0}
+.map-route-overlay-metrics strong{display:block;font-size:14px;color:#078b4e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.map-route-overlay-metrics span{display:block;font-size:9px;color:#718079;margin-top:2px}
+.map-route-overlay-routes{display:grid;gap:5px}
+.map-route-option{width:100%;border:1px solid #dce7e2;border-radius:6px;background:#fff;padding:7px 9px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.map-route-option:hover{background:#f5faf7;border-color:#8ac7aa}
+.map-route-option.active{border-color:#168653;background:#eef9f3;box-shadow:inset 3px 0 #078b4e}
+.map-route-option span{font-size:11px;font-weight:800;color:#23453a}
+.map-route-option small{font-size:10px;color:#1769e0;font-weight:700;white-space:nowrap}
+@media(max-width:950px){
+  .map-route-details-overlay{left:10px;right:10px;bottom:48px;width:auto;max-height:360px}
+  .map-route-overlay-metrics{grid-template-columns:repeat(3,1fr)}
+}
+
+/* v4 route visualization + turn-by-turn details */
+.route-details-section-title{font-size:11px;font-weight:900;color:#17382c;margin:10px 0 6px;padding-bottom:5px;border-bottom:1px solid #e2ebe7;text-transform:uppercase;letter-spacing:.04em}
+.route-details-table{font-size:10px!important}
+.route-details-table th,.route-details-table td{padding:6px 5px!important}
+.route-step-list{display:grid;gap:5px}
+.route-step{display:grid;grid-template-columns:27px 1fr;gap:8px;align-items:start;border:1px solid #dfe9e4;border-radius:7px;padding:7px 8px;background:#fbfdfc}
+.route-step .step-no,.map-route-step .step-no{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#078b4e;color:#fff;font-size:10px;font-weight:900}
+.route-step b{display:block;font-size:10px;color:#24453a;line-height:1.35}
+.route-step small{display:block;color:#718079;font-size:9px;margin-top:2px}
+
+/* Keep only the selected route visually dominant; alternatives remain visible but subdued. */
+.map-route-details-overlay{left:12px!important;right:auto!important;top:112px!important;bottom:auto!important;width:min(390px,calc(100% - 24px))!important;max-height:calc(100% - 145px)!important;overflow:auto!important;z-index:2200!important}
+.map-route-overlay-section-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#17382c;margin:10px 0 6px;padding-top:8px;border-top:1px solid #e2ebe7}
+.map-route-step-list{display:grid;gap:5px}
+.map-route-step{display:grid;grid-template-columns:27px 1fr;gap:7px;align-items:start;padding:6px 7px;border:1px solid #e1eae6;border-radius:7px;background:#fbfdfc}
+.map-route-step b{display:block;font-size:9px;line-height:1.35;color:#24453a}
+.map-route-step small{display:block;font-size:8px;color:#718079;margin-top:2px}
+.map-route-empty{font-size:9px;color:#7b8983;padding:9px;border:1px dashed #cbdad3;border-radius:7px;background:#fafcfb}
+.map-route-option{padding:8px 9px!important}
+.map-route-option.active{box-shadow:inset 3px 0 #078b4e,0 1px 4px #0001!important}
+
+/* On the dashboard's narrow right column, keep the details area reachable without hiding it. */
+.workspace:not(.routefocus):not(.fullmode) .routewide .routepanel{max-height:300px!important;overflow:auto!important}
+.workspace:not(.routefocus):not(.fullmode) .routewide .summary-routes{max-height:260px!important;overflow:auto!important}
+
+body.dark-mode .route-details-section-title,
+body.dark-mode .map-route-overlay-section-title{color:#e7f2ed;border-color:#31463e}
+body.dark-mode .route-step,
+body.dark-mode .map-route-step,
+body.dark-mode .map-route-empty{background:#14201c;border-color:#31463e}
+body.dark-mode .route-step b,
+body.dark-mode .map-route-step b{color:#dcece5}
+body.dark-mode .route-step small,
+body.dark-mode .map-route-step small{color:#9bb0a7}
+body.dark-mode .map-route-details-overlay{background:rgba(12,31,25,.98);border-color:#31463e}
+
+@media(max-width:950px){
+  .map-route-details-overlay{left:10px!important;right:10px!important;top:105px!important;width:auto!important;max-height:calc(100% - 135px)!important}
+}
+\n\n/* LIS v5 final layout corrections */\n.main{overflow:auto!important;scrollbar-gutter:stable;min-width:0}\n.workspace{overflow:hidden!important;min-width:0}\n.workspace.mapfocus{grid-template-columns:1fr!important;height:calc(100vh - 190px)!important;min-height:520px!important;max-height:none!important;overflow:hidden!important}\n.workspace.mapfocus .rightcol{display:none!important}\n.workspace.mapfocus .mapcard{display:block!important;height:100%!important;min-height:520px!important}\n.workspace.mapfocus .map{height:calc(100% - 47px)!important;min-height:0!important}\n.workspace.routefocus{grid-template-columns:minmax(0,1fr) minmax(390px,430px)!important;height:calc(100vh - 190px)!important;min-height:520px!important;max-height:none!important;overflow:hidden!important}\n.workspace.routefocus .mapcard{display:block!important;height:100%!important;min-height:520px!important}\n.workspace.routefocus .map{height:calc(100% - 47px)!important;min-height:0!important}\n.workspace.routefocus .rightcol{display:block!important;min-height:0!important;height:100%!important;overflow:hidden!important}\n.workspace.routefocus .routewide{height:100%!important;max-height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;padding:0 6px 12px 0!important}\n.workspace.routefocus .routewide .routegrid{grid-template-columns:1fr!important;gap:10px!important}\n.workspace.fullmode{grid-template-columns:1fr!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}\n.workspace.fullmode .rightcol{display:block!important;width:100%!important;height:auto!important;min-height:0!important;overflow:visible!important}\n.workspace.fullmode .section.active{width:100%!important;overflow:visible!important}\n#sec-reports{width:100%!important;overflow:visible!important}\n#sec-reports .report-accordion{width:100%!important;overflow:visible!important}\n#sec-reports .report-accordion-body{width:100%!important;overflow:visible!important}\n#sec-reports .scrollx{width:100%!important;max-height:none!important;overflow-x:auto!important;overflow-y:visible!important}\n#sec-reports .report-table{min-width:1100px!important}\n#sec-locations .scrollx{max-height:calc(100vh - 285px)!important;overflow:auto!important}\n.map-route-details-overlay{z-index:4000!important}\n@media(max-width:950px){\n  .main{overflow:auto!important}\n  .workspace.mapfocus,.workspace.routefocus{display:grid!important;grid-template-columns:1fr!important;height:auto!important;max-height:none!important;overflow:visible!important}\n  .workspace.mapfocus .mapcard,.workspace.routefocus .mapcard{height:62vh!important;min-height:460px!important}\n  .workspace.mapfocus .map,.workspace.routefocus .map{height:calc(62vh - 47px)!important;min-height:413px!important}\n  .workspace.routefocus .rightcol{height:auto!important;overflow:visible!important}\n  .workspace.routefocus .routewide{height:auto!important;max-height:none!important;overflow:visible!important}\n  .workspace.fullmode{height:auto!important}\n}\n
+/* LIS v5 branding/header refinement */
+.brand{width:315px!important;flex:0 0 315px!important}.brand h1{font-size:17px!important;white-space:nowrap}.brand small{font-size:10px!important;white-space:nowrap}.topbar{gap:12px!important}.globalSearch{min-width:220px}.topnav{flex:0 1 auto;white-space:nowrap}.topnav button{padding-left:9px!important;padding-right:9px!important}.top-tools{flex:0 0 auto!important}
+@media(max-width:1250px){.brand{width:285px!important;flex-basis:285px!important}.brand h1{font-size:15px!important}.brand small{font-size:9px!important}.topnav button{padding-left:6px!important;padding-right:6px!important}.globalSearch{min-width:180px}}
+@media(max-width:1050px){.brand{width:250px!important;flex-basis:250px!important}.brand small{display:none!important}.brand h1{font-size:15px!important}.globalSearch{min-width:150px}.topnav button{font-size:10px!important}}
+
+
+/* LIS v6 — final visual/layout correction pass */
+.topbar{height:70px;padding:0 14px;gap:12px;overflow:hidden}
+.brand{width:345px!important;flex:0 0 345px!important;gap:9px;min-width:0}
+.brand-copy{min-width:0;display:block}
+.brand h1{font-size:16px!important;line-height:1.05!important;letter-spacing:.15px;white-space:nowrap!important;overflow:visible!important}
+.brand small{display:block!important;font-size:9px!important;line-height:1.25!important;white-space:nowrap!important;color:#6c7c75}
+.globalSearch{flex:1 1 280px;min-width:210px;max-width:430px!important}
+.topnav{margin-left:auto;flex:0 1 auto;min-width:0;overflow:hidden}
+.topnav button{font-size:11px!important;padding:4px 8px!important;white-space:nowrap}
+.top-tools{display:flex;align-items:center;gap:5px;flex:0 0 auto}
+.top-tool,.toprefresh{white-space:nowrap}
+
+/* Never allow the operating map to drift to a world view after a layout/tab change. */
+.workspace.mapfocus .mapcard,.workspace.routefocus .mapcard{overflow:hidden!important}
+.map{position:relative;overflow:hidden}
+.location-popup{width:300px;max-width:300px;padding:10px;font-family:"Noto Sans","Segoe UI",Arial,sans-serif;box-sizing:border-box;color:#17382c;background:#fff;line-height:1.35}
+.location-popup>b{display:block;font-size:13px;margin-bottom:4px;white-space:normal;overflow-wrap:anywhere}
+.location-popup-type{display:block;font-size:10px;color:#6b7c75;margin-bottom:5px}
+.location-popup>small{display:block;font-size:9px;color:#53655e;margin:2px 0}
+.location-popup-actions{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.location-popup-actions button{border:1px solid #c9ddd3;background:#f6fbf8;color:#176b4a;border-radius:5px;padding:5px 7px;font-size:9px;font-weight:700;cursor:pointer}
+.location-popup-actions button:hover{background:#e7f5ee;border-color:#8ac7aa}
+
+/* Reports: use the full available width and keep large tables readable. */
+.workspace.fullmode{width:100%!important;display:block!important;height:auto!important;min-height:0!important;overflow:visible!important}
+.workspace.fullmode .rightcol{width:100%!important;display:block!important;height:auto!important;overflow:visible!important}
+.workspace.fullmode .section.active{width:100%!important;display:block!important}
+#sec-reports{width:100%!important;max-width:none!important;padding:0 0 24px!important}
+#sec-reports>.cardtitle{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:4px 2px 10px}
+#sec-reports .report-accordion{width:100%!important;margin:0 0 12px!important;border-radius:10px!important;overflow:visible!important}
+#sec-reports .report-accordion-head{min-height:64px;padding:12px 14px!important}
+#sec-reports .report-accordion-body{padding:0 14px 16px!important}
+#sec-reports .report-accordion-body>.card{padding:14px 0 0!important}
+#sec-reports .report-accordion-body .grid2{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)!important;gap:12px!important}
+#sec-reports .report-accordion-body .toolbar{display:flex;flex-wrap:wrap;gap:7px!important}
+#sec-reports .report-accordion-body .toolbar .btn{min-height:34px}
+#sec-reports .metricgrid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:9px!important}
+#sec-reports .metric{min-height:64px;padding:11px!important}
+#sec-reports .metric b{font-size:18px!important}
+#sec-reports .report-subcard{margin-top:12px!important;padding:12px!important;border-radius:9px!important;overflow:hidden!important}
+#sec-reports .report-subcard .cardtitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px!important}
+#sec-reports .scrollx{width:100%!important;max-height:560px!important;overflow:auto!important;border:1px solid #dce7e2;border-radius:8px;background:#fff}
+#sec-reports .report-table{width:100%!important;min-width:980px!important;border-collapse:separate!important;border-spacing:0!important}
+#sec-reports .report-table th{position:sticky;top:0;z-index:4;background:#087a4b!important;color:#fff!important;padding:9px 8px!important;font-size:9px!important;white-space:nowrap!important}
+#sec-reports .report-table td{padding:8px!important;font-size:10px!important;white-space:nowrap!important;border-bottom:1px solid #e7eeeb!important}
+#sec-reports .report-table tbody tr:nth-child(even){background:#fbfdfc}
+#sec-reports .report-table tbody tr:hover{background:#eef9f3}
+#sec-reports .report-table td:nth-child(2){white-space:normal!important;min-width:250px}
+#sec-reports .report-table .rank{width:48px;text-align:center}
+#sec-reports .report-direction-banner{position:sticky;top:0;z-index:3;padding:8px 10px;background:#f3faf6;border-bottom:1px solid #d7e8df;font-size:10px;color:#31564a}
+#sec-reports .report-direction-banner span{color:#718079}
+
+@media(max-width:1250px){
+  .brand{width:300px!important;flex-basis:300px!important}
+  .brand h1{font-size:14px!important}
+  .brand small{font-size:8px!important}
+  .globalSearch{min-width:170px;max-width:320px!important}
+  .topnav button{font-size:10px!important;padding:4px 6px!important}
+}
+@media(max-width:1050px){
+  .brand{width:260px!important;flex-basis:260px!important}
+  .brand h1{font-size:13px!important}
+  .brand small{font-size:8px!important}
+  .globalSearch{min-width:130px;max-width:240px!important}
+  .topnav button{font-size:9px!important;padding:4px 5px!important}
+}
+@media(max-width:950px){
+  .topbar{overflow:visible}
+  .brand{width:auto!important;flex:1 1 auto!important}
+  .brand h1{font-size:15px!important}
+  .brand small{display:none!important}
+  .globalSearch{display:none!important}
+  #sec-reports .report-accordion-body .grid2{grid-template-columns:1fr!important}
+  #sec-reports .metricgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #sec-reports .report-table{min-width:900px!important}
+}
+
+/* LIS v7 — Dashboard / Map View restores the Route Planner beside the map */
+.workspace.dashboard-mapview{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(380px,430px)!important;gap:10px!important;height:calc(100vh - 190px)!important;min-height:520px!important;overflow:hidden!important}
+.workspace.dashboard-mapview .mapcard{display:block!important;height:100%!important;min-height:520px!important}
+.workspace.dashboard-mapview .map{height:calc(100% - 47px)!important;min-height:0!important}
+.workspace.dashboard-mapview .rightcol{display:block!important;min-width:0!important;min-height:0!important;height:100%!important;overflow:hidden!important}
+.workspace.dashboard-mapview .routewide{display:block!important;height:100%!important;max-height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;padding:0 4px 12px 0!important}
+.workspace.dashboard-mapview .routewide .routegrid{grid-template-columns:1fr!important;gap:10px!important}
+.workspace.dashboard-mapview .routewide .routecard{width:100%!important;min-width:0!important}
+.workspace.dashboard-mapview .routewide .routepanel,.workspace.dashboard-mapview .routewide .summary-routes,.workspace.dashboard-mapview .routewide .route-alternatives{max-width:100%!important;overflow:auto!important}
+@media(max-width:1250px){.workspace.dashboard-mapview{grid-template-columns:minmax(0,1fr) minmax(360px,400px)!important}}
+@media(max-width:950px){.workspace.dashboard-mapview{display:grid!important;grid-template-columns:1fr!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}.workspace.dashboard-mapview .mapcard{height:62vh!important;min-height:460px!important}.workspace.dashboard-mapview .map{height:calc(62vh - 47px)!important;min-height:413px!important}.workspace.dashboard-mapview .rightcol{height:auto!important;overflow:visible!important}.workspace.dashboard-mapview .routewide{height:auto!important;max-height:none!important;overflow:visible!important}}
+
+
+/* LIS v8 — Depot Report Controls: full-width, readable controls */
+#sec-reports .depot-report-controls-card{
+  padding:16px 18px 14px!important;
+}
+#sec-reports .depot-report-controls-card .cardtitle{
+  margin-bottom:14px!important;
+  align-items:flex-start!important;
+}
+#sec-reports .depot-report-controls-card .cardtitle>div{
+  min-width:0;
+}
+#sec-reports .depot-report-controls-card .cardtitle h3{
+  font-size:15px!important;
+  line-height:1.3!important;
+}
+#sec-reports .depot-report-controls-card .cardtitle .hint{
+  font-size:11px!important;
+  margin-top:4px!important;
+}
+#sec-reports .depot-report-controls-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.65fr) minmax(300px,.9fr)!important;
+  gap:16px!important;
+  align-items:end!important;
+}
+#sec-reports .depot-report-controls-grid .field{
+  min-width:0!important;
+  margin-bottom:0!important;
+}
+#sec-reports .depot-report-controls-grid .field label{
+  font-size:10px!important;
+  margin-bottom:6px!important;
+  color:#486158!important;
+}
+#sec-reports .depot-report-controls-grid select,
+#sec-reports .depot-report-controls-grid .input{
+  height:44px!important;
+  min-height:44px!important;
+  width:100%!important;
+  padding:0 12px!important;
+  font-size:13px!important;
+  font-weight:650!important;
+  border-radius:7px!important;
+  white-space:nowrap!important;
+  text-overflow:ellipsis!important;
+}
+#sec-reports .depot-report-controls-actions{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  flex-wrap:wrap!important;
+  margin-top:13px!important;
+}
+#sec-reports .depot-report-controls-actions .btn{
+  min-height:38px!important;
+  padding:9px 13px!important;
+  font-size:11px!important;
+}
+#sec-reports #depotReportStatus{
+  margin-top:11px!important;
+  min-height:34px!important;
+  display:flex!important;
+  align-items:center!important;
+  line-height:1.35!important;
+  font-size:10px!important;
+}
+#sec-reports #exportDepotDistilleryReport{
+  flex:none!important;
+  white-space:nowrap!important;
+}
+@media(max-width:900px){
+  #sec-reports .depot-report-controls-grid{
+    grid-template-columns:1fr!important;
+    gap:11px!important;
+  }
+  #sec-reports .depot-report-controls-grid .field{
+    width:100%!important;
+  }
+}
+
+
+
+/* LIS v9 — Mappls location popup containment fix
+   Prevent SDK popup wrappers from expanding across the whole map. */
+.lis-location-popup{
+  width:340px!important;
+  max-width:340px!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+.lis-location-popup .location-popup{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  padding:11px!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+.lis-location-popup .location-popup>b{
+  display:block!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+}
+.lis-location-popup .location-popup-actions{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  width:100%!important;
+}
+.lis-location-popup .location-popup-actions button{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+}
+@media(max-width:520px){
+  .lis-location-popup{
+    width:300px!important;
+    max-width:calc(100vw - 36px)!important;
+  }
+}
+
+
+/* LIS v10 — remove Alerts UI and keep five KPI cards balanced */
+.kpis{
+  grid-template-columns:repeat(5,minmax(150px,1fr))!important;
+}
+@media(max-width:1250px){
+  .kpis{grid-template-columns:repeat(3,minmax(130px,1fr))!important}
+}
+@media(max-width:950px){
+  .kpis{grid-template-columns:repeat(2,minmax(130px,1fr))!important}
+}
+
+/* LIS v10 — Mappls popup content must remain a compact location card.
+   Mappls documents popupOptions.maxWidth and popupOptions.className;
+   the inner HTML is also explicitly width-constrained to prevent a
+   full-map white popup surface. */
+.lis-location-popup{
+  max-width:340px!important;
+  width:340px!important;
+  min-width:0!important;
+}
+.lis-location-popup .location-popup{
+  width:320px!important;
+  min-width:320px!important;
+  max-width:320px!important;
+  box-sizing:border-box!important;
+  display:block!important;
+  background:#fff!important;
+  overflow:hidden!important;
+}
+.lis-location-popup .location-popup>b{
+  display:block!important;
+  width:100%!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+}
+.lis-location-popup .location-popup-actions{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:5px!important;
+  width:100%!important;
+}
+@media(max-width:520px){
+  .lis-location-popup,
+  .lis-location-popup .location-popup{
+    width:calc(100vw - 48px)!important;
+    min-width:0!important;
+    max-width:calc(100vw - 48px)!important;
+  }
+}
+
+/* LIS v11 — Header branding: reserve a real, non-overlapping area for the full system name */
+.topbar{
+  display:grid!important;
+  grid-template-columns:360px minmax(220px,1fr) auto auto!important;
+  align-items:center!important;
+  column-gap:14px!important;
+  overflow:visible!important;
+}
+.brand{
+  width:360px!important;
+  min-width:360px!important;
+  max-width:360px!important;
+  flex:none!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow:visible!important;
+}
+.brand-copy{
+  min-width:0!important;
+  width:100%!important;
+  overflow:visible!important;
+}
+.brand h1{
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  font-size:17px!important;
+  line-height:1.05!important;
+  letter-spacing:0!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+}
+.brand small{
+  display:block!important;
+  width:100%!important;
+  margin-top:3px!important;
+  font-size:9px!important;
+  line-height:1.2!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+}
+.globalSearch{
+  grid-column:2!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+}
+.topnav{
+  grid-column:3!important;
+  margin-left:0!important;
+  min-width:0!important;
+  overflow:visible!important;
+}
+.top-tools{
+  grid-column:4!important;
+  min-width:max-content!important;
+}
+@media(max-width:1250px){
+  .topbar{grid-template-columns:310px minmax(170px,1fr) auto auto!important;column-gap:9px!important}
+  .brand{width:310px!important;min-width:310px!important;max-width:310px!important}
+  .brand h1{font-size:15px!important}
+  .brand small{font-size:8px!important}
+  .topnav button{font-size:10px!important;padding-left:5px!important;padding-right:5px!important}
+}
+@media(max-width:1050px){
+  .topbar{grid-template-columns:270px minmax(120px,1fr) auto auto!important}
+  .brand{width:270px!important;min-width:270px!important;max-width:270px!important}
+  .brand h1{font-size:14px!important}
+  .brand small{font-size:7.5px!important}
+  .topnav button{font-size:9px!important;padding-left:4px!important;padding-right:4px!important}
+}
+@media(max-width:950px){
+  .topbar{display:flex!important;gap:8px!important;overflow:visible!important}
+  .brand{width:auto!important;min-width:0!important;max-width:none!important;flex:1 1 auto!important}
+  .brand h1{font-size:15px!important;white-space:nowrap!important}
+  .brand small{display:none!important}
+}
+
+/* =========================================================
+   LIS v12 — Reports readability / information density
+   Keep the existing functionality; improve visual hierarchy.
+   ========================================================= */
+
+#sec-reports{
+  font-size:13px!important;
+  line-height:1.45!important;
+  overflow:visible!important;
+}
+
+#sec-reports .section-head{
+  margin-bottom:12px!important;
+}
+#sec-reports .section-head h2{
+  font-size:19px!important;
+  line-height:1.25!important;
+  margin:0!important;
+}
+#sec-reports .section-head .muted,
+#sec-reports .section-head .hint{
+  font-size:11px!important;
+  line-height:1.45!important;
+}
+
+/* Report cards */
+#sec-reports .card{
+  margin-bottom:12px!important;
+  border-radius:10px!important;
+  overflow:visible!important;
+}
+#sec-reports .cardtitle{
+  min-height:48px!important;
+  padding:10px 12px!important;
+}
+#sec-reports .cardtitle h3{
+  font-size:14px!important;
+  line-height:1.3!important;
+}
+#sec-reports .cardtitle .hint,
+#sec-reports .cardtitle .muted{
+  font-size:11px!important;
+  line-height:1.45!important;
+}
+
+/* Controls */
+#sec-reports .field label{
+  font-size:10px!important;
+  font-weight:700!important;
+  letter-spacing:.02em!important;
+}
+#sec-reports select.input,
+#sec-reports input.input{
+  font-size:13px!important;
+}
+
+/* KPI cards: readable without becoming oversized */
+#sec-reports .kpi b{
+  font-size:18px!important;
+  line-height:1.15!important;
+}
+#sec-reports .kpi span{
+  font-size:9px!important;
+  line-height:1.25!important;
+}
+
+/* Report table: increase font and row height substantially */
+
+#sec-reports table{
+  width:100%!important;
+  min-width:1120px!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+  font-size:12px!important;
+  line-height:1.35!important;
+}
+#sec-reports table thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:5!important;
+  font-size:10px!important;
+  line-height:1.25!important;
+  font-weight:800!important;
+  letter-spacing:.025em!important;
+  padding:10px 9px!important;
+  white-space:nowrap!important;
+}
+#sec-reports table tbody td{
+  font-size:12px!important;
+  line-height:1.35!important;
+  padding:10px 9px!important;
+  vertical-align:middle!important;
+  white-space:nowrap!important;
+}
+#sec-reports table tbody tr{
+  min-height:40px!important;
+}
+#sec-reports table tbody td:nth-child(2){
+  white-space:normal!important;
+  min-width:340px!important;
+  max-width:500px!important;
+  font-weight:650!important;
+  line-height:1.35!important;
+}
+#sec-reports table tbody td:nth-child(5){
+  font-weight:700!important;
+  font-size:12px!important;
+}
+
+/* Keep coordinate columns readable and aligned */
+#sec-reports table tbody td:nth-child(6),
+#sec-reports table tbody td:nth-child(7){
+  font-variant-numeric:tabular-nums!important;
+  letter-spacing:.01em!important;
+}
+
+/* Map/action buttons */
+#sec-reports table .btn,
+#sec-reports table button{
+  min-height:30px!important;
+  padding:6px 10px!important;
+  font-size:10px!important;
+  white-space:nowrap!important;
+}
+
+/* Report helper/status strips */
+#sec-reports .report-status,
+#sec-reports .status,
+#sec-reports [id*="ReportStatus"]{
+  font-size:11px!important;
+  line-height:1.45!important;
+}
+
+/* Don't let report content be squeezed by an accidental narrow grid. */
+#sec-reports .grid2,
+#sec-reports .grid3,
+#sec-reports .grid4{
+  width:100%!important;
+}
+
+/* Print layout */
+@media print{
+  #sec-reports{
+    font-size:11px!important;
+  }
+  
+  #sec-reports table{
+    min-width:0!important;
+    font-size:9px!important;
+  }
+  #sec-reports table tbody td{
+    font-size:9px!important;
+    padding:5px!important;
+  }
+}
+
+/* Responsive: keep report readable on smaller displays */
+@media(max-width:1100px){
+  
+  #sec-reports table{
+    min-width:1050px!important;
+  }
+}
+
+/* LIS v13 — Google-Maps-style simultaneous alternative routes */
+.route-distance-pin{
+  box-sizing:border-box;
+  width:138px;
+  min-height:40px;
+  padding:6px 9px;
+  border:2px solid var(--route-pin,#3b82f6);
+  border-radius:9px;
+  background:rgba(255,255,255,.97);
+  box-shadow:0 3px 12px rgba(0,0,0,.22);
+  font-family:Arial,sans-serif;
+  text-align:left;
+  pointer-events:none;
+}
+.route-distance-pin.selected{
+  width:152px;
+  padding:7px 10px;
+  border-width:3px;
+  box-shadow:0 4px 16px rgba(0,0,0,.28);
+}
+.route-distance-pin b{
+  display:block;
+  color:#17382c;
+  font-size:10px;
+  line-height:1.15;
+  white-space:nowrap;
+}
+.route-distance-pin span{
+  display:block;
+  margin-top:3px;
+  color:#233f35;
+  font-size:10px;
+  font-weight:800;
+  line-height:1.15;
+  white-space:nowrap;
+}
+body.dark-mode .route-distance-pin{
+  background:rgba(15,31,26,.97);
+  color:#e9f4ef;
+}
+body.dark-mode .route-distance-pin b,
+body.dark-mode .route-distance-pin span{
+  color:#e9f4ef;
+}
+
+/* =========================================================
+   LIS v14 — consolidated final UI corrections
+   ========================================================= */
+
+/* Header: never let the long system name collide with search/navigation. */
+.topbar{
+  display:grid!important;
+  grid-template-columns:minmax(305px,330px) minmax(150px,1fr) auto auto!important;
+  gap:10px!important;
+  padding:0 12px!important;
+  overflow:visible!important;
+}
+.brand.lis-brand,
+.brand{
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  flex:none!important;
+  overflow:visible!important;
+}
+.lis-brand-copy{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  overflow:visible!important;
+}
+.lis-brand-copy h1{
+  font-size:16px!important;
+  line-height:1.08!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+}
+.lis-brand-copy small{
+  display:block!important;
+  font-size:9px!important;
+  line-height:1.2!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+}
+.topbar .globalSearch{
+  grid-column:2!important;
+  min-width:150px!important;
+  width:100%!important;
+  max-width:none!important;
+}
+.topbar .topnav{
+  grid-column:3!important;
+  min-width:max-content!important;
+}
+.topbar .top-tools{
+  grid-column:4!important;
+  min-width:max-content!important;
+}
+
+/* At normal laptop widths, prioritize complete branding and usable navigation. */
+@media(max-width:1350px){
+  .topbar{
+    grid-template-columns:minmax(285px,305px) minmax(135px,1fr) auto auto!important;
+    gap:8px!important;
+  }
+  .lis-brand-copy h1{font-size:14px!important}
+  .lis-brand-copy small{font-size:8px!important}
+  .topbar .globalSearch{min-width:135px!important}
+  .topbar .topnav button{font-size:9px!important;padding-left:6px!important;padding-right:6px!important}
+}
+@media(max-width:1120px){
+  .topbar{
+    grid-template-columns:minmax(265px,280px) minmax(110px,1fr) auto auto!important;
+  }
+  .lis-brand-copy h1{font-size:13px!important}
+  .lis-brand-copy small{font-size:7.5px!important}
+  .topbar .topnav button{font-size:8.5px!important;padding-left:4px!important;padding-right:4px!important}
+}
+
+/* Location popup: compact card, never a map-width white panel. */
+.lis-location-popup,
+.lis-location-popup .mappls-popup-content{
+  width:340px!important;
+  max-width:340px!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+}
+.lis-location-popup .location-popup{
+  width:320px!important;
+  max-width:320px!important;
+  min-width:320px!important;
+  box-sizing:border-box!important;
+  padding:11px!important;
+  overflow:hidden!important;
+}
+.lis-location-popup .location-popup>b{
+  display:block!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+}
+.lis-location-popup .location-popup-actions{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:5px!important;
+}
+@media(max-width:520px){
+  .lis-location-popup,
+  .lis-location-popup .mappls-popup-content,
+  .lis-location-popup .location-popup{
+    width:calc(100vw - 48px)!important;
+    min-width:0!important;
+    max-width:calc(100vw - 48px)!important;
+  }
+}
+
+/* Dashboard Map View: retain Map + right Route Planner. */
+.workspace.dashboard-mapview{
+  grid-template-columns:minmax(0,1fr) minmax(380px,430px)!important;
+}
+.workspace.dashboard-mapview .rightcol{
+  display:flex!important;
+  min-width:0!important;
+}
+.workspace.dashboard-mapview .routewide{
+  display:block!important;
+}
+.workspace.dashboard-mapview .routewide .routegrid{
+  grid-template-columns:1fr!important;
+}
+
+/* Reports: comfortable reading width and row height. */
+
+#sec-reports .report-table,
+#sec-reports table{
+  min-width:1120px!important;
+  font-size:12px!important;
+}
+#sec-reports .report-table th,
+#sec-reports table thead th{
+  padding:10px 9px!important;
+  font-size:10px!important;
+  line-height:1.25!important;
+  white-space:nowrap!important;
+}
+#sec-reports .report-table td,
+#sec-reports table tbody td{
+  padding:10px 9px!important;
+  font-size:12px!important;
+  line-height:1.35!important;
+}
+#sec-reports .report-table td:nth-child(2),
+#sec-reports table tbody td:nth-child(2){
+  white-space:normal!important;
+  min-width:340px!important;
+  max-width:520px!important;
+}
+
+/* Alerts are removed from the UI. */
+#alertToggle,#alertPop,#alertBadge,#kpiAlerts,#alertList,
+.alert-pop,.alert-item,.alert-empty{display:none!important}
+
+/* Route alternatives: all routes stay visible; selected route is emphasized. */
+.route-distance-pin{
+  pointer-events:none!important;
+  z-index:60!important;
+}
+
+/* =========================================================
+   LIS v15 — Reports: show ALL rows + frozen table header
+   The report itself follows normal page scrolling. There is
+   no fixed-height inner table that hides records.
+   ========================================================= */
+
+#sec-reports{
+  overflow:visible!important;
+  min-height:0!important;
+  height:auto!important;
+}
+
+#sec-reports .report-table-scroll,
+#sec-reports .table-wrap{
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  -webkit-overflow-scrolling:touch!important;
+  border:1px solid #dce8e2!important;
+  border-radius:8px!important;
+}
+
+/* Let every report row participate in the document flow. */
+#sec-reports .report-table-scroll table,
+#sec-reports .table-wrap table{
+  width:100%!important;
+  min-width:1120px!important;
+  height:auto!important;
+}
+
+/* Frozen header: remains visible while the REPORT PAGE is scrolled. */
+#sec-reports .report-table-scroll thead th,
+#sec-reports .table-wrap thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:30!important;
+  background:#087f4f!important;
+  box-shadow:0 2px 4px rgba(0,0,0,.12)!important;
+}
+
+/* All 14 (and any future) rows are rendered; don't clip the tbody. */
+#sec-reports .report-table-scroll tbody,
+#sec-reports .table-wrap tbody{
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+
+/* Comfortable readable rows. */
+#sec-reports .report-table-scroll tbody td,
+#sec-reports .table-wrap tbody td{
+  padding:10px 9px!important;
+  line-height:1.4!important;
+}
+
+/* Keep the report controls/KPIs above the complete table. */
+#sec-reports .card,
+#sec-reports .report-table-scroll{
+  overflow:visible!important;
+}
+
+/* On smaller screens only horizontal scrolling is used; vertical
+   scrolling remains the normal page scroll. */
+@media(max-width:900px){
+  #sec-reports .report-table-scroll,
+  #sec-reports .table-wrap{
+    overflow-x:auto!important;
+    overflow-y:visible!important;
+  }
+}
+
+/* Print: show every row without a clipped viewport. */
+@media print{
+  #sec-reports .report-table-scroll,
+  #sec-reports .table-wrap{
+    overflow:visible!important;
+    max-height:none!important;
+    height:auto!important;
+  }
+  #sec-reports .report-table-scroll thead th,
+  #sec-reports .table-wrap thead th{
+    position:static!important;
+  }
+}
+
+/* LIS v15 FINAL — actual report .scrollx containers: never clip rows */
+#sec-reports .scrollx{
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+/* Freeze report table headers during normal page scrolling. */
+#sec-reports .scrollx table thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:50!important;
+  background:#087f4f!important;
+  box-shadow:0 2px 5px rgba(0,0,0,.16)!important;
+}
+
+/* Do not freeze the whole table or tbody; all records remain in page flow. */
+#sec-reports .scrollx table,
+#sec-reports .scrollx tbody{
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+
+/* Readable rows across both report tables. */
+#sec-reports .scrollx table tbody td{
+  padding:10px 9px!important;
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+
+/* Print all report records. */
+@media print{
+  #sec-reports .scrollx{
+    height:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  #sec-reports .scrollx table thead th{
+    position:static!important;
+  }
+}
+
+/* =========================================================
+   LIS v16 — Map View location pin information card
+   Uses Mappls InfoWindow with a controlled 340px width.
+   ========================================================= */
+.lis-info-window,
+.lis-info-window *{
+  box-sizing:border-box!important;
+}
+.lis-info-window{
+  max-width:340px!important;
+  width:340px!important;
+}
+.lis-info-window .mappls-popup-content,
+.lis-info-window .mappls-infowindow-content,
+.lis-info-window .mappls-info-window-content{
+  width:340px!important;
+  max-width:340px!important;
+  min-width:0!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:visible!important;
+}
+.lis-info-card{
+  width:320px!important;
+  max-width:320px!important;
+  min-width:0!important;
+  padding:12px!important;
+  background:#fff!important;
+  color:#17382c!important;
+  border:1px solid #d5e4dd!important;
+  border-radius:9px!important;
+  box-shadow:0 5px 18px rgba(0,0,0,.20)!important;
+  font-family:"Noto Sans","Segoe UI",Arial,sans-serif!important;
+  line-height:1.35!important;
+}
+.lis-info-title{
+  font-size:14px!important;
+  font-weight:900!important;
+  line-height:1.25!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  margin-bottom:4px!important;
+}
+.lis-info-type{
+  font-size:10px!important;
+  color:#60746b!important;
+  margin-bottom:8px!important;
+}
+.lis-info-row{
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  font-size:10px!important;
+  padding:3px 0!important;
+  border-bottom:1px solid #edf2ef!important;
+}
+.lis-info-row span{
+  text-align:right!important;
+}
+.lis-info-coords{
+  font-size:9px!important;
+  color:#687970!important;
+  margin-top:7px!important;
+}
+.lis-info-actions{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:5px!important;
+  margin-top:9px!important;
+}
+.lis-info-actions button{
+  border:1px solid #c9ddd3!important;
+  background:#f6fbf8!important;
+  color:#176b4a!important;
+  border-radius:5px!important;
+  padding:6px 8px!important;
+  font-size:9px!important;
+  font-weight:800!important;
+  cursor:pointer!important;
+}
+.lis-info-actions button:hover{
+  background:#e7f5ee!important;
+  border-color:#8ac7aa!important;
+}
+body.dark-mode .lis-info-card{
+  background:#10251e!important;
+  color:#e8f3ee!important;
+  border-color:#34554a!important;
+}
+body.dark-mode .lis-info-type,
+body.dark-mode .lis-info-coords{
+  color:#b6cbc2!important;
+}
+body.dark-mode .lis-info-row{
+  border-color:#29463d!important;
+}
+body.dark-mode .lis-info-actions button{
+  background:#19372d!important;
+  color:#ccefe0!important;
+  border-color:#41695a!important;
+}
+
+/* =========================================================
+   LIS v17 — Professional brand/header + unified color system
+   ========================================================= */
+:root{
+  --lis-primary:#087f4f;
+  --lis-primary-dark:#075b3a;
+  --lis-primary-2:#12a56a;
+  --lis-primary-soft:#e8f6ef;
+  --lis-ink:#17352b;
+  --lis-muted:#6c7b75;
+  --lis-border:#dbe6e1;
+  --lis-page:#f3f7f5;
+  --lis-white:#ffffff;
+}
+
+/* Clean desktop header: white surface + green accent, instead of green-on-green text. */
+.topbar{
+  height:70px!important;
+  min-height:70px!important;
+  display:grid!important;
+  grid-template-columns:minmax(330px,360px) minmax(240px,1fr) auto auto!important;
+  align-items:center!important;
+  gap:14px!important;
+  padding:0 16px!important;
+  overflow:visible!important;
+  background:#fff!important;
+  color:var(--lis-ink)!important;
+  border-bottom:1px solid #d7e4de!important;
+  box-shadow:0 2px 12px rgba(17,54,42,.08)!important;
+  position:relative!important;
+}
+.topbar:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-1px;
+  height:3px;
+  background:linear-gradient(90deg,var(--lis-primary-dark),var(--lis-primary-2),#58c995);
+  pointer-events:none;
+}
+
+.brand,.brand.lis-brand{
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  flex:none!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:11px!important;
+  overflow:visible!important;
+}
+.brand .logo{
+  flex:0 0 44px!important;
+  width:44px!important;
+  height:44px!important;
+  border:0!important;
+  border-radius:12px!important;
+  background:linear-gradient(145deg,var(--lis-primary-dark),var(--lis-primary-2))!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(8,127,79,.24)!important;
+  letter-spacing:-.5px;
+}
+.brand-copy,.lis-brand-copy{
+  min-width:0!important;
+  overflow:visible!important;
+}
+.brand h1,.lis-brand-copy h1{
+  margin:0!important;
+  color:var(--lis-ink)!important;
+  font-size:18px!important;
+  line-height:1.05!important;
+  font-weight:900!important;
+  letter-spacing:.2px!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+}
+.brand small,.lis-brand-copy small{
+  display:block!important;
+  margin-top:5px!important;
+  color:#71817a!important;
+  font-size:10px!important;
+  line-height:1.15!important;
+  font-weight:600!important;
+  white-space:nowrap!important;
+}
+
+.topbar .globalSearch{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  height:40px!important;
+  border:1px solid #cfded7!important;
+  border-radius:10px!important;
+  background-color:#f8faf9!important;
+  color:var(--lis-ink)!important;
+  box-shadow:inset 0 1px 2px rgba(10,50,35,.03)!important;
+}
+.topbar .globalSearch::placeholder{color:#82908b!important}
+.topbar .globalSearch:focus{
+  background:#fff!important;
+  border-color:#55b98b!important;
+  box-shadow:0 0 0 3px rgba(18,165,106,.11)!important;
+}
+
+.topbar .topnav{
+  margin-left:0!important;
+  height:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:3px!important;
+  white-space:nowrap!important;
+}
+.topbar .topnav button{
+  height:40px!important;
+  padding:0 10px!important;
+  border:1px solid transparent!important;
+  border-radius:9px!important;
+  background:transparent!important;
+  color:#3c5149!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  transition:all .16s ease!important;
+}
+.topbar .topnav button:hover{
+  background:#eef7f2!important;
+  color:var(--lis-primary-dark)!important;
+}
+.topbar .topnav button.active{
+  background:var(--lis-primary-soft)!important;
+  color:var(--lis-primary-dark)!important;
+  border-color:#c9e7d8!important;
+  box-shadow:none!important;
+}
+
+.topbar .top-tools{
+  display:flex!important;
+  align-items:center!important;
+  gap:6px!important;
+  white-space:nowrap!important;
+}
+.topbar .top-tool,.topbar .toprefresh{
+  height:38px!important;
+  min-width:38px!important;
+  padding:0 10px!important;
+  border:1px solid #d6e3dd!important;
+  border-radius:9px!important;
+  background:#fff!important;
+  color:#315047!important;
+  font-weight:800!important;
+}
+.topbar .top-tool:hover,.topbar .toprefresh:hover{
+  background:#f0f8f4!important;
+  border-color:#b8d9c9!important;
+  color:var(--lis-primary-dark)!important;
+}
+
+/* Keep the overall palette consistent with the brand. */
+.sidebar{
+  background:linear-gradient(180deg,#075d3b 0%,#064e34 100%)!important;
+  box-shadow:2px 0 12px rgba(4,55,37,.16)!important;
+}
+.tab{color:#dff1e9!important}
+.tab:hover{background:rgba(255,255,255,.09)!important}
+.tab.active{
+  background:#149765!important;
+  box-shadow:inset 3px 0 #fff,0 3px 10px rgba(0,0,0,.10)!important;
+}
+.main{background:var(--lis-page)!important}
+.kpi,.card,.report-subcard,.section,.routepanel,.route-alternatives{
+  border-color:var(--lis-border)!important;
+}
+.btn.primary,.primary{
+  background:var(--lis-primary)!important;
+  border-color:var(--lis-primary)!important;
+}
+.btn.primary:hover,.primary:hover{background:var(--lis-primary-dark)!important}
+
+/* Desktop/laptop breakpoints: preserve the complete brand without overlap. */
+@media(max-width:1500px){
+  .topbar{grid-template-columns:minmax(300px,330px) minmax(190px,1fr) auto auto!important;gap:10px!important}
+  .brand h1,.lis-brand-copy h1{font-size:16px!important}
+  .brand small,.lis-brand-copy small{font-size:9px!important}
+  .topbar .topnav button{padding:0 7px!important;font-size:10px!important}
+}
+@media(max-width:1200px){
+  .topbar{grid-template-columns:minmax(270px,300px) minmax(150px,1fr) auto auto!important}
+  .brand .logo{width:40px!important;height:40px!important;flex-basis:40px!important}
+  .brand h1,.lis-brand-copy h1{font-size:15px!important}
+  .brand small,.lis-brand-copy small{font-size:8px!important}
+  .topbar .topnav button{padding:0 5px!important;font-size:9px!important}
+}
+@media(max-width:1050px){
+  .topbar{grid-template-columns:minmax(235px,270px) minmax(120px,1fr) auto!important}
+  .topbar .topnav{display:none!important}
+  .brand h1,.lis-brand-copy h1{font-size:15px!important}
+  .brand small,.lis-brand-copy small{font-size:8px!important}
+}
+@media(max-width:720px){
+  .topbar{height:62px!important;min-height:62px!important;grid-template-columns:1fr auto!important;padding:0 10px!important}
+  .brand .logo{width:38px!important;height:38px!important;flex-basis:38px!important;border-radius:10px!important}
+  .brand h1,.lis-brand-copy h1{font-size:14px!important}
+  .brand small,.lis-brand-copy small{display:none!important}
+  .topbar .globalSearch{display:none!important}
+  .topbar .top-tools{grid-column:2!important}
+}
+
+/* =========================================================
+   LIS v18 — Google-Maps-style route rendering + final UI polish
+   ========================================================= */
+:root{
+  --lis-primary:#087f4f;
+  --lis-primary-dark:#075b3a;
+  --lis-primary-2:#12a56a;
+  --lis-primary-soft:#e8f6ef;
+  --lis-ink:#17352b;
+  --lis-muted:#6c7b75;
+  --lis-border:#dbe6e1;
+  --lis-page:#f3f7f5;
+}
+
+/* Final header override: white professional header, green brand mark, clear contrast. */
+.topbar{
+  background:#ffffff!important;
+  color:var(--lis-ink)!important;
+  border-bottom:1px solid #d7e4de!important;
+  box-shadow:0 2px 12px rgba(17,54,42,.08)!important;
+}
+.topbar:after{height:3px!important;background:linear-gradient(90deg,#075b3a,#087f4f,#35b77a)!important}
+.brand{gap:10px!important}
+.brand .logo{
+  width:42px!important;height:42px!important;flex:0 0 42px!important;
+  border-radius:11px!important;
+  background:linear-gradient(145deg,#075b3a,#0a9b5c)!important;
+  border:0!important;color:#fff!important;
+  box-shadow:0 4px 12px rgba(7,91,58,.22)!important;
+  letter-spacing:-.5px!important;
+}
+.lis-brand-copy h1,.brand h1{
+  color:#123c2d!important;
+  font-weight:900!important;
+  letter-spacing:.25px!important;
+}
+.lis-brand-copy small,.brand small{color:#6a7d75!important;font-weight:600!important}
+.topbar .globalSearch{
+  background:#f7faf8!important;
+  border:1px solid #cbdcd4!important;
+  color:#18372c!important;
+}
+.topbar .globalSearch:focus{background:#fff!important;border-color:#39a978!important;box-shadow:0 0 0 3px rgba(8,127,79,.10)!important}
+.topbar .topnav button{color:#365449!important;border:1px solid transparent!important}
+.topbar .topnav button:hover{background:#edf8f2!important;color:#087f4f!important}
+.topbar .topnav button.active{background:#e5f5ed!important;color:#075b3a!important;border-color:#bfe2d0!important}
+.topbar .top-tool{background:#f7faf8!important;color:#315247!important;border:1px solid #d5e2dc!important}
+.topbar .toprefresh{background:#087f4f!important;color:#fff!important;border-color:#087f4f!important}
+
+/* Route alternatives panel stays compact and readable. */
+.route-alt-card{min-height:50px!important}
+.route-alt-card.active{background:#effaf5!important;border-color:#39a978!important}
+
+/* Google-Maps-style route badges: compact, non-blocking, attached visually to the route. */
+.route-distance-pin{
+  width:118px!important;
+  min-height:34px!important;
+  padding:5px 8px!important;
+  border:1.5px solid var(--route-pin,#087f4f)!important;
+  border-radius:8px!important;
+  background:rgba(255,255,255,.98)!important;
+  box-shadow:0 2px 8px rgba(0,0,0,.20)!important;
+  pointer-events:none!important;
+  transform:translateY(-2px)!important;
+}
+.route-distance-pin.selected{
+  width:156px!important;
+  min-height:42px!important;
+  padding:6px 9px!important;
+  border:2px solid var(--route-pin,#087f4f)!important;
+  box-shadow:0 3px 12px rgba(0,0,0,.24)!important;
+}
+.route-distance-pin b{font-size:9px!important;line-height:1.1!important;color:#17382c!important}
+.route-distance-pin span{font-size:9px!important;line-height:1.1!important;margin-top:2px!important;color:#355248!important}
+
+/* Map route detail card: useful like a navigation panel, but never dominates the map. */
+.map-route-details-overlay{
+  width:min(340px,calc(100% - 24px))!important;
+  max-height:min(390px,calc(100% - 120px))!important;
+  border-radius:10px!important;
+  border:1px solid #cbded5!important;
+  box-shadow:0 5px 20px rgba(0,0,0,.18)!important;
+  padding:10px!important;
+}
+.map-route-overlay-head{padding-bottom:8px!important}
+.map-route-overlay-metrics{gap:6px!important}
+.map-route-overlay-metrics>div{padding:7px!important}
+
+/* Reports: retain the requested full-row scrolling + frozen header behavior. */
+#sec-reports .scrollx{
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+}
+#sec-reports .scrollx table thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:50!important;
+  background:#087f4f!important;
+  color:#fff!important;
+}
+#sec-reports .scrollx table,#sec-reports .scrollx tbody{
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+
+/* Make route/map mode unmistakably active. */
+.routemapbtn{background:#edf8f2!important;border-color:#b9dfcd!important;color:#087f4f!important}
+
+
+/* =========================================================
+   LIS v20 FINAL — REPORT TABLE SCROLL FIX
+   The v19 rules made the report table flow with the page, but
+   the live layout still has a viewport-constrained application.
+   Therefore each report table gets its OWN vertical scroll area.
+   Header remains frozen while the table body scrolls.
+   ========================================================= */
+
+#sec-reports .report-subcard{
+  overflow:visible!important;
+}
+
+#sec-reports .scrollx{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:240px!important;
+  max-height:calc(100vh - 500px)!important;
+  overflow-x:auto!important;
+  overflow-y:scroll!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-gutter:stable!important;
+  border:1px solid #d4e2dc!important;
+  border-radius:8px!important;
+  background:#fff!important;
+  position:relative!important;
+}
+
+#sec-reports .scrollx table{
+  display:table!important;
+  width:100%!important;
+  min-width:1120px!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+}
+
+#sec-reports .scrollx table thead{
+  display:table-header-group!important;
+}
+
+#sec-reports .scrollx table thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:100!important;
+  background:#087f4f!important;
+  color:#fff!important;
+  box-shadow:0 2px 5px rgba(0,0,0,.18)!important;
+}
+
+#sec-reports .scrollx table tbody{
+  display:table-row-group!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+
+#sec-reports .scrollx table tbody tr{
+  display:table-row!important;
+  height:auto!important;
+  max-height:none!important;
+}
+
+#sec-reports .scrollx table tbody td{
+  display:table-cell!important;
+}
+
+#sec-reports .scrollx::-webkit-scrollbar{
+  width:10px!important;
+  height:10px!important;
+}
+#sec-reports .scrollx::-webkit-scrollbar-track{
+  background:#eef5f1!important;
+  border-radius:8px!important;
+}
+#sec-reports .scrollx::-webkit-scrollbar-thumb{
+  background:#79bda2!important;
+  border-radius:8px!important;
+  border:2px solid #eef5f1!important;
+}
+#sec-reports .scrollx::-webkit-scrollbar-thumb:hover{
+  background:#087f4f!important;
+}
+
+/* Keep the page/report section usable on smaller screens. */
+@media(max-width:900px){
+  #sec-reports .scrollx{
+    min-height:220px!important;
+    max-height:calc(100vh - 430px)!important;
+  }
+}
+
+
+/* =========================================================
+   LIS v21 — REPORTS SCROLL FIX
+   The application .main uses overflow:hidden. Earlier fixes
+   changed the table container but did not create a reliable
+   Reports scroll viewport. v21 makes .workspace.reportsmode
+   the scroll viewport; the tables remain normal-height.
+   ========================================================= */
+
+.workspace.reportsmode{
+  display:block!important;
+  width:100%!important;
+  height:calc(100vh - 190px)!important;
+  min-height:0!important;
+  max-height:calc(100vh - 190px)!important;
+  overflow-x:auto!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  scrollbar-width:auto!important;
+  scrollbar-gutter:stable!important;
+  padding:0 4px 28px 0!important;
+}
+.workspace.reportsmode .section#sec-reports{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  padding-bottom:80px!important;
+}
+.workspace.reportsmode .report-accordion,
+.workspace.reportsmode .report-accordion-body{
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.workspace.reportsmode .report-accordion-body{
+  display:block!important;
+}
+.workspace.reportsmode #sec-reports .scrollx{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  overflow-x:visible!important;
+  overflow-y:visible!important;
+}
+.workspace.reportsmode #sec-reports .scrollx table{
+  width:100%!important;
+  min-width:1100px!important;
+  height:auto!important;
+  max-height:none!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+}
+.workspace.reportsmode #sec-reports .scrollx table thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:200!important;
+  background:#087f4f!important;
+  color:#fff!important;
+  box-shadow:0 2px 7px rgba(0,0,0,.18)!important;
+}
+.workspace.reportsmode #sec-reports .scrollx table tbody,
+.workspace.reportsmode #sec-reports .scrollx table tbody tr,
+.workspace.reportsmode #sec-reports .scrollx table tbody td{
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.workspace.reportsmode #sec-reports .report-subcard{
+  overflow:visible!important;
+}
+.workspace.reportsmode::-webkit-scrollbar{
+  width:12px;
+  height:12px;
+}
+.workspace.reportsmode::-webkit-scrollbar-track{
+  background:#e9f0ed;
+  border-radius:8px;
+}
+.workspace.reportsmode::-webkit-scrollbar-thumb{
+  background:#087f4f;
+  border-radius:8px;
+  border:2px solid #e9f0ed;
+}
+@media(max-width:950px){
+  .workspace.reportsmode{
+    height:calc(100vh - 150px)!important;
+    max-height:calc(100vh - 150px)!important;
+  }
+}
+
+
+/* =========================================================
+   LIS v22 FINAL — ACTUAL REPORT TABLE SCROLL FIX
+   v21 made the workspace scroll, but the live report table
+   still appeared frozen. v22 intentionally creates a real
+   scroll viewport around EACH report table.
+   ========================================================= */
+
+/* Keep the Reports page itself in normal document flow. */
+.workspace.reportsmode{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  padding:0 0 30px 0!important;
+}
+
+/* Each generated report table gets a real, visible vertical scrollbar. */
+#sec-reports .scrollx{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  height:460px!important;
+  min-height:320px!important;
+  max-height:460px!important;
+  overflow-y:scroll!important;
+  overflow-x:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-gutter:stable!important;
+  border:1px solid #cbded5!important;
+  border-radius:8px!important;
+  background:#fff!important;
+  box-shadow:inset 0 0 0 1px rgba(8,127,79,.03)!important;
+}
+
+/* Override every earlier v15/v20/v21 rule that changed .scrollx to visible. */
+.workspace.reportsmode #sec-reports .scrollx{
+  height:460px!important;
+  min-height:320px!important;
+  max-height:460px!important;
+  overflow-y:scroll!important;
+  overflow-x:auto!important;
+}
+
+/* Do not turn the table itself into a second scroll container. */
+#sec-reports .scrollx table,
+.workspace.reportsmode #sec-reports .scrollx table{
+  display:table!important;
+  width:100%!important;
+  min-width:1120px!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+}
+
+/* Frozen header while the report frame scrolls. */
+#sec-reports .scrollx table thead th,
+.workspace.reportsmode #sec-reports .scrollx table thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:500!important;
+  background:#087f4f!important;
+  color:#fff!important;
+  box-shadow:0 2px 7px rgba(0,0,0,.20)!important;
+}
+
+/* Keep all rows in normal table layout. */
+#sec-reports .scrollx table tbody,
+#sec-reports .scrollx table tbody tr,
+#sec-reports .scrollx table tbody td,
+.workspace.reportsmode #sec-reports .scrollx table tbody,
+.workspace.reportsmode #sec-reports .scrollx table tbody tr,
+.workspace.reportsmode #sec-reports .scrollx table tbody td{
+  display:table-row-group!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+#sec-reports .scrollx table tbody tr{
+  display:table-row!important;
+}
+#sec-reports .scrollx table tbody td{
+  display:table-cell!important;
+}
+
+/* Make the scrollbar obvious on desktop Chrome. */
+#sec-reports .scrollx::-webkit-scrollbar{
+  width:14px!important;
+  height:12px!important;
+}
+#sec-reports .scrollx::-webkit-scrollbar-track{
+  background:#e7f0ec!important;
+  border-left:1px solid #d0e0d9!important;
+}
+#sec-reports .scrollx::-webkit-scrollbar-thumb{
+  background:#087f4f!important;
+  border-radius:8px!important;
+  border:3px solid #e7f0ec!important;
+}
+#sec-reports .scrollx::-webkit-scrollbar-thumb:hover{
+  background:#075b3a!important;
+}
+
+/* Add an unambiguous scroll hint above report tables. */
+#sec-reports .report-subcard .cardtitle{
+  position:relative!important;
+}
+#sec-reports .report-subcard .cardtitle:after{
+  content:'↕ Scroll table for more rows'!important;
+  color:#5d746a!important;
+  font-size:9px!important;
+  font-weight:700!important;
+  margin-left:auto!important;
+  white-space:nowrap!important;
+}
+@media(max-width:900px){
+  #sec-reports .scrollx,
+  .workspace.reportsmode #sec-reports .scrollx{
+    height:380px!important;
+    max-height:380px!important;
+  }
+}
+
+/* =========================================================
+   LIS v22 — FINAL BRAND HEADER
+   ========================================================= */
+.topbar{
+  min-height:70px!important;
+  height:70px!important;
+  grid-template-columns:minmax(350px,370px) minmax(220px,1fr) auto auto!important;
+  gap:10px!important;
+  padding:0 12px!important;
+  background:#fff!important;
+}
+.brand,.brand.lis-brand{
+  width:100%!important;
+  min-width:350px!important;
+  overflow:visible!important;
+}
+.lis-brand-copy,.brand-copy{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  overflow:visible!important;
+}
+.lis-brand-copy h1,.brand h1{
+  font-size:15px!important;
+  line-height:1.05!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  color:#123c2d!important;
+}
+.lis-brand-copy small,.brand small{
+  font-size:8px!important;
+  line-height:1.15!important;
+  white-space:nowrap!important;
+  color:#6a7d75!important;
+}
+.brand .logo{
+  width:42px!important;
+  height:42px!important;
+  flex:0 0 42px!important;
+}
+@media(max-width:1250px){
+  .topbar{
+    grid-template-columns:minmax(315px,330px) minmax(160px,1fr) auto auto!important;
+  }
+  .brand,.brand.lis-brand{min-width:315px!important}
+  .lis-brand-copy h1,.brand h1{font-size:14px!important}
+}
+@media(max-width:1050px){
+  .topbar{
+    grid-template-columns:minmax(260px,285px) minmax(120px,1fr) auto!important;
+  }
+  .brand,.brand.lis-brand{min-width:260px!important}
+  .lis-brand-copy h1,.brand h1{font-size:13px!important}
+}
+
+
+/* =========================================================
+   LIS v23 — REPORTS: ISOLATED REAL SCROLL VIEWPORT
+   IMPORTANT: This is intentionally independent of `.scrollx`.
+   The report renderer now wraps each generated table in
+   `.report-table-scroll`, so old v15-v22 rules cannot make
+   the table appear frozen.
+   ========================================================= */
+
+/* Reports page remains normally scrollable in the main viewport. */
+.workspace.fullmode{
+  width:100%!important;
+  display:block!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.workspace.fullmode .rightcol{
+  width:100%!important;
+  display:block!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+#sec-reports{
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+
+/* THIS is the actual scrolling box for each long report. */
+#sec-reports .report-table-scroll{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  height:430px!important;
+  min-height:430px!important;
+  max-height:430px!important;
+  overflow-y:auto!important;
+  overflow-x:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-width:thin!important;
+  scrollbar-gutter:stable!important;
+  background:#fff!important;
+  border:1px solid #cbded5!important;
+  border-radius:7px!important;
+  box-sizing:border-box!important;
+}
+
+/* The generated table itself must never be a scroll container. */
+#sec-reports .report-table-scroll > .report-direction-banner{
+  position:sticky!important;
+  top:0!important;
+  z-index:20!important;
+  margin:0!important;
+  background:#f7fbf9!important;
+}
+#sec-reports .report-table-scroll > table{
+  display:table!important;
+  width:100%!important;
+  min-width:980px!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+}
+#sec-reports .report-table-scroll > table thead th{
+  position:sticky!important;
+  top:0!important;
+  z-index:30!important;
+  background:#087a4b!important;
+  color:#fff!important;
+  box-shadow:0 2px 6px rgba(0,0,0,.18)!important;
+}
+#sec-reports .report-table-scroll > table tbody{
+  display:table-row-group!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+#sec-reports .report-table-scroll > table tbody tr{
+  display:table-row!important;
+  height:auto!important;
+}
+#sec-reports .report-table-scroll > table tbody td{
+  display:table-cell!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+
+/* Strong, visible desktop scrollbar. */
+#sec-reports .report-table-scroll::-webkit-scrollbar{
+  width:14px!important;
+  height:12px!important;
+}
+#sec-reports .report-table-scroll::-webkit-scrollbar-track{
+  background:#e3eee9!important;
+  border-left:1px solid #cbded5!important;
+}
+#sec-reports .report-table-scroll::-webkit-scrollbar-thumb{
+  background:#087f4f!important;
+  border-radius:8px!important;
+  border:3px solid #e3eee9!important;
+  min-height:42px!important;
+}
+#sec-reports .report-table-scroll::-webkit-scrollbar-thumb:hover{
+  background:#075b3a!important;
+}
+
+/* Small helper label so the user immediately knows the table is scrollable. */
+#sec-reports .report-subcard .cardtitle:after{
+  content:'↕ Scroll table for more rows'!important;
+  color:#5d746a!important;
+  font-size:9px!important;
+  font-weight:700!important;
+  margin-left:auto!important;
+  white-space:nowrap!important;
+}
+
+@media(max-width:900px){
+  #sec-reports .report-table-scroll{
+    height:360px!important;
+    min-height:360px!important;
+    max-height:360px!important;
+  }
+}
+
+/* =========================================================
+   LIS v23 — CLEAN BRANDING OVERRIDE
+   ========================================================= */
+.topbar{
+  background:#fff!important;
+  border-bottom:2px solid #d8e8e1!important;
+}
+.brand{
+  min-width:350px!important;
+}
+.brand .logo{
+  width:42px!important;
+  height:42px!important;
+  flex:0 0 42px!important;
+  border-radius:11px!important;
+  background:linear-gradient(135deg,#087f4f,#0aa36a)!important;
+  color:#fff!important;
+  border:0!important;
+  box-shadow:0 4px 12px rgba(8,127,79,.22)!important;
+}
+.brand .brand-copy,
+.brand .lis-brand-copy{
+  min-width:0!important;
+  overflow:visible!important;
+}
+.brand h1{
+  color:#123b2d!important;
+  font-size:17px!important;
+  font-weight:900!important;
+  letter-spacing:.2px!important;
+  white-space:nowrap!important;
+}
+.brand small{
+  color:#708078!important;
+  font-size:9px!important;
+  white-space:nowrap!important;
+}
+.topnav button.active,
+.topnav button:hover{
+  background:#eaf7f1!important;
+  color:#087f4f!important;
+}
+
+
+/* LIS v25 — consolidated route planner layout */
+.workspace.routefocus{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(410px,450px)!important;height:calc(100vh - 190px)!important;min-height:520px!important;gap:10px!important;overflow:visible!important}
+.workspace.routefocus .mapcard{display:block!important;height:100%!important;min-height:520px!important}
+.workspace.routefocus .rightcol{display:flex!important;width:auto!important;min-width:0!important;height:100%!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important}
+.workspace.routefocus .routewide{padding:10px!important}
+.workspace.routefocus .routewide .routegrid{grid-template-columns:1fr!important;gap:10px!important}
+.workspace.routefocus .routewide .routecard{width:100%!important;min-width:0!important}
+@media(max-width:950px){.workspace.routefocus{display:grid!important;grid-template-columns:1fr!important;height:auto!important;min-height:0!important}.workspace.routefocus .mapcard{height:600px!important;min-height:600px!important}.workspace.routefocus .map{height:553px!important;min-height:553px!important}.workspace.routefocus .rightcol{height:auto!important;max-height:none!important;overflow:visible!important}}
